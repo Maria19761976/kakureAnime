@@ -2,36 +2,15 @@ import Navbar from "./Navbar";
 
 export default function Layout({ children }) {
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
+    <div className="min-h-dvh bg-slate-900 text-slate-100 flex flex-col">
       <Navbar />
 
-      <main
-        style={{
-          flex: 1,
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: "24px",
-          width: "100%",
-        }}
-      >
+      <main className="flex-1 mx-auto w-full max-w-[2200px] px-4 sm:px-6 lg:px-8 2xl:px-10 py-8">
         {children}
       </main>
 
-      <footer
-        style={{
-          padding: "12px",
-          textAlign: "center",
-          borderTop: "1px solid #e5e7eb",
-          fontSize: "12px",
-        }}
-      >
-        Kakure Anime
+      <footer className="border-t border-amber-200/10 py-6 text-center text-xs text-slate-300/70">
+        Kakure Anime • Proyecto de equipo
       </footer>
     </div>
   );
