@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { deleteMovie, getMovieById } from "../services/moviesApi";
+import { useParams, Link } from "react-router-dom";
+import { getMovieById } from "../services/moviesApi";
 
 export default function MovieDetail() {
   const { id } = useParams();
-  const navigate = useNavigate();
 
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -19,7 +18,7 @@ export default function MovieDetail() {
         setMovie(data);
       } catch (err) {
         console.error(err);
-        setErrorMsg("No se pudo cargar el detalle.");
+        setErrorMsg("No se pudo cargar el detalle de la película.");
       } finally {
         setLoading(false);
       }
@@ -27,59 +26,90 @@ export default function MovieDetail() {
     load();
   }, [id]);
 
-  const onDelete = async () => {
-    const ok = confirm("¿Seguro que quieres borrar esta película?");
-    if (!ok) return;
+  if (loading) return <p className="text-slate-200/70">Cargando detalle...</p>;
 
-    try {
-      await deleteMovie(id);
-      navigate("/movies");
-    } catch (err) {
-      console.error(err);
-      alert("No se pudo borrar la película.");
-    }
-  };
+  if (errorMsg) {
+    return (
+      <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-red-200">
+        {errorMsg}
+      </div>
+    );
+  }
 
-  if (loading) return <p>Cargando...</p>;
-  if (errorMsg) return <p>{errorMsg}</p>;
-  if (!movie) return <p>No encontrada.</p>;
+  if (!movie) return <p className="text-slate-200/70">No existe esta película.</p>;
 
   return (
-    <section>
-      <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-        <h1 style={{ marginRight: "auto" }}>{movie.title}</h1>
+    <section className="space-y-5">
+      <div className="flex items-center justify-between">
+        <Link
+          to="/movies"
+          className="text-sm font-semibold text-amber-100/90 hover:text-amber-50"
+        >
+          ← Volver al catálogo
+        </Link>
 
-        <Link to={`/edit-movie/${movie.id}`}>Editar</Link>
-        <button type="button" onClick={onDelete}>
-          Borrar
-        </button>
+        <Link
+          to={`/edit-movie/${movie.id}`}
+          className="rounded-xl border border-amber-200/15 px-4 py-2 text-sm font-semibold text-slate-100 hover:bg-white/5 transition"
+        >
+          Editar
+        </Link>
       </div>
 
-      <p>
-        {movie.year ? `${movie.year} — ` : ""}
-        {movie.genre || ""}
-      </p>
+      <div className="rounded-2xl border border-amber-200/15 bg-slate-800/35 p-5 sm:p-7">
+        <div className="grid gap-6 md:grid-cols-[320px_1fr]">
+          {/* Poster */}
+          <div className="overflow-hidden rounded-2xl border border-amber-200/10 bg-slate-900/30">
+            <img
+              src={movie.poster}
+              alt={movie.title}
+              onError={(e) => {
+                e.currentTarget.src =
+                  "https://placehold.co/600x900?text=Kakure+Anime";
+              }}
+              className="h-full w-full object-cover"
+            />
+          </div>
 
-      {movie.poster ? (
-        <img
-          src={movie.poster}
-          alt={movie.title}
-          style={{ width: 260, height: 360, objectFit: "cover", borderRadius: 8 }}
-          onError={(e) => {
-            e.currentTarget.style.display = "none";
-          }}
-        />
-      ) : null}
+          {/* Info */}
+          <div className="space-y-4">
+            <div>
+              <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-amber-50">
+                {movie.title}
+              </h1>
 
-      {movie.studio ? <p><strong>Studio:</strong> {movie.studio}</p> : null}
-      {movie.duration ? <p><strong>Duración:</strong> {movie.duration} min</p> : null}
-      {movie.rating ? <p><strong>Rating:</strong> {movie.rating}</p> : null}
+              <p className="mt-2 text-sm text-slate-200/70">
+                {movie.year} · {movie.genre}
+                {movie.studio ? ` · ${movie.studio}` : ""}
+                {movie.duration ? ` · ${movie.duration} min` : ""}
+              </p>
+            </div>
 
-      {movie.synopsis ? <p style={{ maxWidth: 720 }}>{movie.synopsis}</p> : null}
+            <div className="flex flex-wrap gap-2">
+              <span className="inline-flex items-center gap-1 rounded-full border border-amber-200/20 bg-slate-900/60 px-3 py-1 text-xs font-semibold text-amber-100">
+                ★ {movie.rating ? Number(movie.rating).toFixed(1) : "—"}
+              </span>
 
-      <p>
-        <Link to="/movies">Volver a Movies</Link>
-      </p>
+              <span className="inline-flex rounded-full border border-amber-200/15 bg-white/5 px-3 py-1 text-xs font-semibold text-slate-100/85">
+                {movie.genre}
+              </span>
+
+              {movie.studio ? (
+                <span className="inline-flex rounded-full border border-amber-200/15 bg-white/5 px-3 py-1 text-xs font-semibold text-slate-100/85">
+                  {movie.studio}
+                </span>
+              ) : null}
+            </div>
+
+            <div className="rounded-2xl border border-amber-200/10 bg-slate-900/30 p-4">
+              <h3 className="text-sm font-semibold text-amber-50">Sinopsis</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-200/75">
+                {movie.synopsis || "Sin sinopsis."}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
