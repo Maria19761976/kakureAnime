@@ -8,8 +8,6 @@ export default function Movies() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
-
-  // ✅ Cargar filtros guardados (si existen)
   const saved = (() => {
     try {
       return JSON.parse(localStorage.getItem(LS_KEY) || "null");
@@ -24,8 +22,6 @@ export default function Movies() {
 
   const loadMovies = async () => {
     try {
-      setLoading(true);
-      setErrorMsg("");
       const data = await getAllMovies();
       setMovies(data);
     } catch (err) {
@@ -39,8 +35,6 @@ export default function Movies() {
   useEffect(() => {
     loadMovies();
   }, []);
-
-  // ✅ Guardar filtros en localStorage
   useEffect(() => {
     localStorage.setItem(LS_KEY, JSON.stringify({ genre, year, query }));
   }, [genre, year, query]);
@@ -64,9 +58,7 @@ export default function Movies() {
   }, [movies]);
 
   const years = useMemo(() => {
-    const y = new Set(
-      movies.map((m) => m.year).filter((v) => v !== undefined && v !== null)
-    );
+    const y = new Set(movies.map((m) => m.year).filter((v) => v !== undefined && v !== null));
     return ["ALL", ...Array.from(y).sort((a, b) => b - a)];
   }, [movies]);
 
@@ -91,7 +83,7 @@ export default function Movies() {
     setQuery("");
   };
 
-  if (loading) return <p className="text-slate-200/70">Cargando películas...</p>;
+  if (loading) return <p className="text-zinc-400">Cargando películas...</p>;
 
   if (errorMsg) {
     return (
@@ -103,10 +95,10 @@ export default function Movies() {
 
   return (
     <section>
-      {/* HEADER + FILTROS (compacto) */}
+      {}
       <div className="mb-6 rounded-2xl border border-amber-400/15 bg-slate-800/35 p-4">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-          {/* Título */}
+          {}
           <div>
             <h2 className="text-2xl font-semibold text-amber-50">Movies</h2>
             <p className="text-sm text-slate-300/80">
@@ -122,7 +114,7 @@ export default function Movies() {
             </p>
           </div>
 
-          {/* Filtros */}
+          {}
           <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-4 md:w-auto">
             <div className="space-y-1 sm:col-span-2">
               <label className="text-xs text-slate-300/70">Buscar</label>
@@ -175,13 +167,12 @@ export default function Movies() {
         </div>
       </div>
 
-      {/* GRID */}
       {filtered.length === 0 ? (
         <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-zinc-300">
           No hay resultados con los filtros actuales.
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-6">
           {filtered.map((movie) => (
             <MovieCard key={movie.id} movie={movie} onDelete={handleDelete} />
           ))}
