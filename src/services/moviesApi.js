@@ -5,3 +5,8 @@ const api = axios.create({
 });
 
 export default api;
+
+export async function getAllMovies() {
+  const res = await api.get("/movies");
+  return res.data;
+}
