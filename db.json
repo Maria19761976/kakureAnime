@@ -1,0 +1,475 @@
+{
+  "movies": [
+    {
+      "id": "ghib1",
+      "title": "Spirited Away",
+      "year": 2001,
+      "duration": 125,
+      "genre": "Fantasia",
+      "studio": "Studio Ghibli",
+      "rating": 8.6,
+      "poster": "https://cdn.myanimelist.net/images/anime/6/79597.jpg",
+      "synopsis": "Chihiro queda atrapada en un mundo de espíritus y debe encontrar la manera de salvar a sus padres y regresar a casa."
+    },
+    {
+      "id": "ghib2",
+      "title": "Princess Mononoke",
+      "year": 1997,
+      "duration": 134,
+      "genre": "Aventura",
+      "studio": "Studio Ghibli",
+      "rating": 8.7,
+      "poster": "https://cdn.myanimelist.net/images/anime/7/75919.jpg",
+      "synopsis": "Un príncipe maldito se ve envuelto en el conflicto entre la naturaleza y la expansión industrial, en una guerra sin buenos ni malos."
+    },
+    {
+      "id": "ghib3",
+      "title": "Howl's Moving Castle",
+      "year": 2004,
+      "duration": 119,
+      "genre": "Romance",
+      "studio": "Studio Ghibli",
+      "rating": 8.6,
+      "poster": "https://cdn.myanimelist.net/images/anime/5/75810.jpg",
+      "synopsis": "Sophie, convertida en anciana por una maldición, encuentra refugio en el castillo ambulante del mago Howl mientras estalla una guerra."
+    },
+    {
+      "id": "ghib4",
+      "title": "My Neighbor Totoro",
+      "year": 1988,
+      "duration": 86,
+      "genre": "Comedia",
+      "studio": "Studio Ghibli",
+      "rating": 8.3,
+      "poster": "https://cdn.myanimelist.net/images/anime/4/75923.jpg",
+      "synopsis": "Dos hermanas se mudan al campo y descubren criaturas mágicas que habitan el bosque cercano, incluyendo al entrañable Totoro."
+    },
+    {
+      "id": "ghib5",
+      "title": "Kiki's Delivery Service",
+      "year": 1989,
+      "duration": 103,
+      "genre": "Aventura",
+      "studio": "Studio Ghibli",
+      "rating": 8.1,
+      "poster": "https://cdn.myanimelist.net/images/anime/1579/140483.jpg",
+      "synopsis": "Kiki, una joven bruja, inicia su vida independiente ofreciendo un servicio de reparto mientras busca confianza y propósito."
+    },
+    {
+      "id": "ghib6",
+      "title": "Ponyo",
+      "year": 2008,
+      "duration": 101,
+      "genre": "Fantasia",
+      "studio": "Studio Ghibli",
+      "rating": 7.9,
+      "poster": "https://cdn.myanimelist.net/images/anime/1331/138727.jpg",
+      "synopsis": "Una niña pez desea convertirse en humana tras conocer a un niño, provocando un desequilibrio mágico en el mar y la costa."
+    },
+    {
+      "id": "ghib7",
+      "title": "Nausicaä of the Valley of the Wind",
+      "year": 1984,
+      "duration": 117,
+      "genre": "Ciencia ficcion",
+      "studio": "Topcraft",
+      "rating": 8.3,
+      "poster": "https://cdn.myanimelist.net/images/anime/10/75914.jpg",
+      "synopsis": "En un mundo postapocalíptico, Nausicaä intenta comprender un ecosistema tóxico mientras evita una guerra devastadora."
+    },
+    {
+      "id": "ghib8",
+      "title": "Castle in the Sky",
+      "year": 1986,
+      "duration": 124,
+      "genre": "Aventura",
+      "studio": "Studio Ghibli",
+      "rating": 8.2,
+      "poster": "https://cdn.myanimelist.net/images/anime/5/37799.jpg",
+      "synopsis": "Sheeta y Pazu huyen de piratas y militares mientras buscan Laputa, una legendaria ciudad flotante."
+    },
+    {
+      "id": "ghib9",
+      "title": "Porco Rosso",
+      "year": 1992,
+      "duration": 94,
+      "genre": "Accion",
+      "studio": "Studio Ghibli",
+      "rating": 7.9,
+      "poster": "https://cdn.myanimelist.net/images/anime/1728/138709.jpg",
+      "synopsis": "Un piloto convertido en cerdo combate piratas aéreos en el Adriático mientras lidia con su pasado y un extraño hechizo."
+    },
+    {
+      "id": "ghib10",
+      "title": "The Wind Rises",
+      "year": 2013,
+      "duration": 126,
+      "genre": "Drama",
+      "studio": "Studio Ghibli",
+      "rating": 8.1,
+      "poster": "https://cdn.myanimelist.net/images/anime/8/52353.jpg",
+      "synopsis": "La vida del ingeniero Jiro Horikoshi se cruza con su sueño de diseñar aviones y los dilemas morales de una época convulsa."
+    },
+
+    {
+      "id": "shnk1",
+      "title": "Your Name",
+      "year": 2016,
+      "duration": 106,
+      "genre": "Drama",
+      "studio": "CoMix Wave Films",
+      "rating": 8.8,
+      "poster": "https://cdn.myanimelist.net/images/anime/5/87048.jpg",
+      "synopsis": "Dos adolescentes conectan misteriosamente intercambiando cuerpos, y descubren que su vínculo desafía el tiempo."
+    },
+    {
+      "id": "shnk2",
+      "title": "Weathering With You",
+      "year": 2019,
+      "duration": 112,
+      "genre": "Romance",
+      "studio": "CoMix Wave Films",
+      "rating": 8.3,
+      "poster": "https://cdn.myanimelist.net/images/anime/1880/101146.jpg",
+      "synopsis": "En una Tokio lluviosa, un chico conoce a una chica con la capacidad de despejar el cielo, a un precio inesperado."
+    },
+    {
+      "id": "shnk3",
+      "title": "Suzume",
+      "year": 2022,
+      "duration": 122,
+      "genre": "Aventura",
+      "studio": "CoMix Wave Films",
+      "rating": 8.2,
+      "poster": "https://cdn.myanimelist.net/images/anime/1598/128450.jpg",
+      "synopsis": "Suzume se ve envuelta en un viaje para cerrar puertas que desatan desastres, enfrentándose a pérdidas y recuerdos."
+    },
+
+    {
+      "id": "kyo1",
+      "title": "A Silent Voice",
+      "year": 2016,
+      "duration": 130,
+      "genre": "Drama",
+      "studio": "Kyoto Animation",
+      "rating": 8.9,
+      "poster": "https://cdn.myanimelist.net/images/anime/1122/96435.jpg",
+      "synopsis": "Un joven busca redención tras haber acosado a una compañera sorda, intentando reparar el daño y reconciliarse consigo mismo."
+    },
+    {
+      "id": "kyo2",
+      "title": "Violet Evergarden: The Movie",
+      "year": 2020,
+      "duration": 140,
+      "genre": "Drama",
+      "studio": "Kyoto Animation",
+      "rating": 8.7,
+      "poster": "https://cdn.myanimelist.net/images/anime/1825/110716.jpg",
+      "synopsis": "Violet continúa su camino para entender las emociones mientras una última carta puede cambiarlo todo."
+    },
+
+    {
+      "id": "sat1",
+      "title": "Perfect Blue",
+      "year": 1998,
+      "duration": 81,
+      "genre": "Thriller",
+      "studio": "Madhouse",
+      "rating": 8.5,
+      "poster": "https://cdn.myanimelist.net/images/anime/1254/134212.jpg",
+      "synopsis": "Una idol que se reinventa como actriz empieza a perder la línea entre realidad y ficción mientras sufre acoso y paranoia."
+    },
+    {
+      "id": "sat2",
+      "title": "Paprika",
+      "year": 2006,
+      "duration": 90,
+      "genre": "Ciencia ficcion",
+      "studio": "Madhouse",
+      "rating": 8.0,
+      "poster": "https://cdn.myanimelist.net/images/anime/1929/93629.jpg",
+      "synopsis": "Una tecnología permite entrar en sueños, pero al ser robada desata un caos donde el sueño invade el mundo real."
+    },
+    {
+      "id": "sat3",
+      "title": "Tokyo Godfathers",
+      "year": 2003,
+      "duration": 92,
+      "genre": "Drama",
+      "studio": "Madhouse",
+      "rating": 8.3,
+      "poster": "https://cdn.myanimelist.net/images/anime/1480/132791.jpg",
+      "synopsis": "Tres personas sin hogar encuentran un bebé en Nochebuena y emprenden una búsqueda llena de coincidencias y humanidad."
+    },
+
+    {
+      "id": "hos1",
+      "title": "The Girl Who Leapt Through Time",
+      "year": 2006,
+      "duration": 98,
+      "genre": "Romance",
+      "studio": "Madhouse",
+      "rating": 8.1,
+      "poster": "https://cdn.myanimelist.net/images/anime/1/2432.jpg",
+      "synopsis": "Una estudiante descubre que puede saltar en el tiempo y usa su poder para arreglar su vida, sin prever las consecuencias."
+    },
+    {
+      "id": "hos2",
+      "title": "Summer Wars",
+      "year": 2009,
+      "duration": 114,
+      "genre": "Ciencia ficcion",
+      "studio": "Madhouse",
+      "rating": 8.0,
+      "poster": "https://cdn.myanimelist.net/images/anime/1593/116751.jpg",
+      "synopsis": "Un error en un mundo virtual amenaza sistemas globales, y una familia debe unirse para evitar el colapso."
+    },
+    {
+      "id": "hos3",
+      "title": "Wolf Children",
+      "year": 2012,
+      "duration": 117,
+      "genre": "Drama",
+      "studio": "Studio Chizu",
+      "rating": 8.7,
+      "poster": "https://cdn.myanimelist.net/images/anime/9/35721.jpg",
+      "synopsis": "Una madre cría sola a sus hijos mitad lobo, mitad humanos, enfrentando sacrificios y decisiones sobre identidad."
+    },
+    {
+      "id": "hos4",
+      "title": "Mirai",
+      "year": 2018,
+      "duration": 98,
+      "genre": "Fantasia",
+      "studio": "Studio Chizu",
+      "rating": 7.4,
+      "poster": "https://cdn.myanimelist.net/images/anime/1042/95674.jpg",
+      "synopsis": "Un niño celoso de su hermana bebé vive encuentros fantásticos con familiares de distintas épocas."
+    },
+
+    {
+      "id": "eva1",
+      "title": "Evangelion: 1.0 You Are (Not) Alone",
+      "year": 2007,
+      "duration": 98,
+      "genre": "Ciencia ficcion",
+      "studio": "Khara",
+      "rating": 7.7,
+      "poster": "https://cdn.myanimelist.net/images/anime/7/74975.jpg",
+      "synopsis": "Shinji es reclutado para pilotar un EVA y proteger a la humanidad de los Ángeles, mientras carga con traumas personales."
+    },
+    {
+      "id": "eva2",
+      "title": "Evangelion: 2.0 You Can (Not) Advance",
+      "year": 2009,
+      "duration": 112,
+      "genre": "Ciencia ficcion",
+      "studio": "Khara",
+      "rating": 8.1,
+      "poster": "https://cdn.myanimelist.net/images/anime/5/74983.jpg",
+      "synopsis": "Nuevos pilotos y amenazas intensifican la guerra contra los Ángeles, y el vínculo entre los personajes se vuelve más frágil."
+    },
+    {
+      "id": "eva3",
+      "title": "Evangelion: 3.0 You Can (Not) Redo",
+      "year": 2012,
+      "duration": 96,
+      "genre": "Ciencia ficcion",
+      "studio": "Khara",
+      "rating": 7.3,
+      "poster": "https://cdn.myanimelist.net/images/anime/9/43201.jpg",
+      "synopsis": "Tras despertar en un mundo cambiado, Shinji intenta arreglarlo todo, pero cada decisión lo hunde más en el conflicto."
+    },
+
+    {
+      "id": "gits1",
+      "title": "Ghost in the Shell",
+      "year": 1995,
+      "duration": 83,
+      "genre": "Ciencia ficcion",
+      "studio": "Production I.G",
+      "rating": 8.3,
+      "poster": "https://cdn.myanimelist.net/images/anime/10/82594.jpg",
+      "synopsis": "En un futuro ciberpunk, Motoko Kusanagi persigue a un hacker mientras cuestiona qué significa ser humano en un cuerpo artificial."
+    },
+    {
+      "id": "ak1",
+      "title": "Akira",
+      "year": 1988,
+      "duration": 124,
+      "genre": "Ciencia ficcion",
+      "studio": "Tokyo Movie Shinsha",
+      "rating": 8.1,
+      "poster": "https://cdn.myanimelist.net/images/anime/1408/114012.jpg",
+      "synopsis": "En Neo-Tokyo, un experimento desata poderes destructivos y una crisis política y social de escala apocalíptica."
+    },
+
+    {
+      "id": "opz1",
+      "title": "One Piece Film: Z",
+      "year": 2012,
+      "duration": 107,
+      "genre": "Accion",
+      "studio": "Toei Animation",
+      "rating": 7.9,
+      "poster": "https://cdn.myanimelist.net/images/anime/6/44297.jpg",
+      "synopsis": "Los Sombrero de Paja se enfrentan a un antiguo almirante con un plan que amenaza el equilibrio del mundo."
+    },
+    {
+      "id": "dms1",
+      "title": "Demon Slayer: Mugen Train",
+      "year": 2020,
+      "duration": 117,
+      "genre": "Accion",
+      "studio": "ufotable",
+      "rating": 8.6,
+      "poster": "https://cdn.myanimelist.net/images/anime/1704/106947.jpg",
+      "synopsis": "Tanjiro y compañía se unen al Pilar de la Llama para investigar desapariciones en un tren dominado por pesadillas."
+    },
+    {
+      "id": "jjk0",
+      "title": "Jujutsu Kaisen 0",
+      "year": 2021,
+      "duration": 105,
+      "genre": "Accion",
+      "studio": "MAPPA",
+      "rating": 8.3,
+      "poster": "https://cdn.myanimelist.net/images/anime/1121/119044.jpg",
+      "synopsis": "Yuta, marcado por una maldición, entra en el instituto de hechicería para aprender a controlar su poder y proteger a los suyos."
+    },
+    {
+      "id": "dbs1",
+      "title": "Dragon Ball Super: Broly",
+      "year": 2018,
+      "duration": 100,
+      "genre": "Accion",
+      "studio": "Toei Animation",
+      "rating": 8.0,
+      "poster": "https://cdn.myanimelist.net/images/anime/1575/93498.jpg",
+      "synopsis": "Goku y Vegeta se enfrentan a Broly, un Saiyan con un potencial monstruoso, mientras resurgen viejos conflictos."
+    },
+
+    {
+      "id": "red1",
+      "title": "Redline",
+      "year": 2009,
+      "duration": 102,
+      "genre": "Accion",
+      "studio": "Madhouse",
+      "rating": 8.1,
+      "poster": "https://cdn.myanimelist.net/images/anime/12/28553.jpg",
+      "synopsis": "Una carrera intergaláctica ilegal desata adrenalina y caos absoluto en un espectáculo de velocidad sin frenos."
+    },
+    {
+      "id": "pm1",
+      "title": "Promare",
+      "year": 2019,
+      "duration": 111,
+      "genre": "Accion",
+      "studio": "Trigger",
+      "rating": 7.9,
+      "poster": "https://cdn.myanimelist.net/images/anime/1008/101845.jpg",
+      "synopsis": "Un equipo de bomberos combate un fenómeno humano ígneo mientras descubre una conspiración que pone en jaque a la ciudad."
+    },
+    {
+      "id": "mha2",
+      "title": "My Hero Academia: Heroes Rising",
+      "year": 2019,
+      "duration": 104,
+      "genre": "Accion",
+      "studio": "Bones",
+      "rating": 7.9,
+      "poster": "https://cdn.myanimelist.net/images/anime/1019/103292.jpg",
+      "synopsis": "La Clase 1-A se enfrenta a un villano abrumador en una isla remota, obligando a los héroes en formación a ir más allá de sus límites."
+    },
+
+    {
+      "id": "gint1",
+      "title": "Gintama: The Final",
+      "year": 2021,
+      "duration": 104,
+      "genre": "Comedia",
+      "studio": "Bandai Namco Pictures",
+      "rating": 8.7,
+      "poster": "https://cdn.myanimelist.net/images/anime/1245/116760.jpg",
+      "synopsis": "Gintoki y sus aliados encaran el último enfrentamiento mientras el pasado y el futuro de Edo se deciden en una batalla final."
+    },
+    {
+      "id": "fate1",
+      "title": "Fate/stay night: Heaven's Feel I. Presage Flower",
+      "year": 2017,
+      "duration": 120,
+      "genre": "Fantasia",
+      "studio": "ufotable",
+      "rating": 8.2,
+      "poster": "https://cdn.myanimelist.net/images/anime/1274/102213.jpg",
+      "synopsis": "La Guerra del Santo Grial toma un giro oscuro cuando secretos y sacrificios amenazan con destruir a quienes participan."
+    },
+    {
+      "id": "fate2",
+      "title": "Fate/stay night: Heaven's Feel II. Lost Butterfly",
+      "year": 2019,
+      "duration": 117,
+      "genre": "Fantasia",
+      "studio": "ufotable",
+      "rating": 8.6,
+      "poster": "https://cdn.myanimelist.net/images/anime/1974/98158.jpg",
+      "synopsis": "La guerra se vuelve más brutal; alianzas se rompen y la sombra que devora la ciudad exige decisiones imposibles."
+    },
+    {
+      "id": "fate3",
+      "title": "Fate/stay night: Heaven's Feel III. Spring Song",
+      "year": 2020,
+      "duration": 122,
+      "genre": "Fantasia",
+      "studio": "ufotable",
+      "rating": 8.7,
+      "poster": "https://cdn.myanimelist.net/images/anime/1142/112957.jpg",
+      "synopsis": "En el clímax de la Guerra del Grial, Shirou debe elegir qué salvar cuando todo lo que ama queda al borde del abismo."
+    },
+    {
+    "id": "grave-fireflies",
+    "title": "Grave of the Fireflies",
+    "year": 1988,
+    "duration": 89,
+    "genre": "Drama",
+    "studio": "Studio Ghibli",
+    "rating": 8.5,
+    "poster": "https://cdn.myanimelist.net/images/anime/1485/141208.jpg",
+    "synopsis": "Durante los últimos meses de la Segunda Guerra Mundial, dos hermanos huérfanos luchan por sobrevivir en un Japón devastado por los bombardeos."
+    },
+    {
+    "id": "millennium-actress",
+    "title": "Millennium Actress",
+    "year": 2001,
+    "duration": 87,
+    "genre": "Drama",
+    "studio": "Madhouse",
+    "rating": 8.2,
+    "poster": "https://cdn.myanimelist.net/images/anime/1648/93626.jpg",
+    "synopsis": "Un documentalista entrevista a una legendaria actriz retirada, reviviendo su vida a través de recuerdos que se mezclan con los papeles que interpretó en el cine."
+    },
+    {
+    "id": "princess-kaguya",
+    "title": "The Tale of the Princess Kaguya",
+    "year": 2013,
+    "duration": 137,
+    "genre": "Fantasia",
+    "studio": "Studio Ghibli",
+    "rating": 8.1,
+    "poster": "https://cdn.myanimelist.net/images/anime/1935/93606.jpg",
+    "synopsis": "Basada en un cuento popular japonés, narra la historia de una misteriosa niña encontrada dentro de un bambú que crece rápidamente y cautiva a todos con su belleza."
+    },
+    {
+    "id": "josee-tiger-fish",
+    "title": "Josee, the Tiger and the Fish",
+    "year": 2020,
+    "duration": 98,
+    "genre": "Romance",
+    "studio": "Bones",
+    "rating": 8.0,
+    "poster": "https://cdn.myanimelist.net/images/anime/1714/108892.jpg",
+    "synopsis": "Una joven con discapacidad y un estudiante universitario desarrollan una relación profunda que les obliga a enfrentarse a sus miedos, sueños y al futuro."
+    }
+  ]
+}
