@@ -10,3 +10,8 @@ export async function getAllMovies() {
   const res = await api.get("/movies");
   return res.data;
 }
+
+export async function getMovieById(id) {
+  const res = await api.get(`/movies/${id}`);
+  return res.data;
+}
