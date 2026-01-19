@@ -1,53 +1,60 @@
 import { useEffect, useState } from "react";
-import { getAllMovies } from "../services/moviesApi";
-import { Link } from "react-router-dom";
+import { getAllMovies, deleteMovie } from "../services/moviesApi";
+import MovieCard from "../components/MovieCard";
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
 
-  useEffect(() => {
-    async function load() {
-      try {
-        setLoading(true);
-        setErrorMsg("");
-        const data = await getAllMovies();
-        setMovies(data);
-      } catch (err) {
-        console.error(err);
-        setErrorMsg(
-          "No se pudieron cargar las películas. ¿Está encendido JSON Server?",
-        );
-      } finally {
-        setLoading(false);
-      }
+  const loadMovies = async () => {
+    try {
+      setLoading(true);
+      setErrorMsg("");
+      const data = await getAllMovies();
+      setMovies(data);
+    } catch (err) {
+      console.error(err);
+      setErrorMsg("No se pudieron cargar las películas. ¿Está encendido JSON Server?");
+    } finally {
+      setLoading(false);
     }
+  };
 
-    load();
+  useEffect(() => {
+    loadMovies();
   }, []);
 
-  if (loading) return <p>Cargando películas...</p>;
+  const handleDelete = async (id) => {
+    const ok = confirm("¿Seguro que quieres borrar esta película?");
+    if (!ok) return;
 
-  if (errorMsg) return <p>{errorMsg}</p>;
+    try {
+      await deleteMovie(id);
+      await loadMovies();
+    } catch (err) {
+      console.error(err);
+      alert("No se pudo borrar la película.");
+    }
+  };
+
+  if (loading) return <p className="text-slate-200/70">Cargando películas...</p>;
+  if (errorMsg) return <p className="text-red-300">{errorMsg}</p>;
 
   return (
-    <section>
-      <h1>Movies</h1>
+    <section className="space-y-4">
+      <div>
+        <h1 className="text-2xl font-semibold text-amber-50">Movies</h1>
+        <p className="text-sm text-slate-200/70">
+          Mostrando <span className="font-semibold text-amber-50">{movies.length}</span> películas
+        </p>
+      </div>
 
-      <p>
-        Mostrando <strong>{movies.length}</strong> películas
-      </p>
-
-      <ul>
-        {movies.map((m) => (
-          <li key={m.id}>
-            <Link to={`/movies/${m.id}`}>
-              {m.title} ({m.year}) — {m.genre}
-            </Link>
-          </li>
+      <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+        {movies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} onDelete={handleDelete} />
         ))}
-      </ul>
+      </div>
     </section>
   );
 }
