@@ -20,3 +20,8 @@ export async function createMovie(payload) {
   const res = await api.post("/movies", payload);
   return res.data;
 }
+
+export async function updateMovie(id, payload) {
+  const res = await api.put(`/movies/${id}`, payload);
+  return res.data;
+}
