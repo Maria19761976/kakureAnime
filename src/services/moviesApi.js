@@ -25,3 +25,7 @@ export async function updateMovie(id, payload) {
   const res = await api.put(`/movies/${id}`, payload);
   return res.data;
 }
+
+export async function deleteMovie(id) {
+  await api.delete(`/movies/${id}`);
+}
