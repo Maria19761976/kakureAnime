@@ -1,61 +1,43 @@
 import { NavLink } from "react-router-dom";
 
-const linkBase = "text-sm font-semibold";
-const linkInactive = "opacity-70 hover:opacity-100";
-const linkActive = "opacity-100 underline";
+const base =
+  "px-3 py-2 rounded-xl text-sm font-semibold transition border";
+const active =
+  "border-amber-200/30 bg-amber-200/10 text-amber-50";
+const idle =
+  "border-transparent text-slate-200/70 hover:text-slate-100 hover:bg-white/5";
 
 export default function Navbar() {
   return (
-    <header>
-      <nav
-        style={{
-          display: "flex",
-          gap: "16px",
-          alignItems: "center",
-          padding: "12px 16px",
-          borderBottom: "1px solid #e5e7eb",
-        }}
-      >
-        <NavLink to="/" className={`${linkBase} ${linkInactive}`}>
-          Kakure Anime
+    <header className="sticky top-0 z-50 border-b border-amber-200/10 bg-slate-900/80 backdrop-blur">
+      <nav className="mx-auto flex max-w-[2200px] items-center justify-between px-4 sm:px-6 lg:px-8 2xl:px-10 py-3">
+        {/* Brand */}
+        <NavLink to="/" className="flex items-center gap-2">
+          <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl border border-amber-200/15 bg-white/5 text-amber-200 font-bold">
+            K
+          </span>
+          <span className="text-sm sm:text-base font-semibold tracking-wide text-amber-50">
+            Kakure Anime
+          </span>
         </NavLink>
 
-        <div style={{ display: "flex", gap: "12px", marginLeft: "12px" }}>
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              `${linkBase} ${isActive ? linkActive : linkInactive}`
-            }
-          >
-            Home
-          </NavLink>
-
-          <NavLink
-            to="/movies"
-            className={({ isActive }) =>
-              `${linkBase} ${isActive ? linkActive : linkInactive}`
-            }
-          >
-            Movies
-          </NavLink>
-
-          <NavLink
-            to="/add-movie"
-            className={({ isActive }) =>
-              `${linkBase} ${isActive ? linkActive : linkInactive}`
-            }
-          >
-            Add
-          </NavLink>
-
-          <NavLink
-            to="/location"
-            className={({ isActive }) =>
-              `${linkBase} ${isActive ? linkActive : linkInactive}`
-            }
-          >
-            Location
-          </NavLink>
+        {/* Links */}
+        <div className="flex items-center gap-2">
+          {[
+            { to: "/", label: "Home" },
+            { to: "/movies", label: "Movies" },
+            { to: "/add-movie", label: "Add" },
+            { to: "/location", label: "Location" },
+          ].map((l) => (
+            <NavLink
+              key={l.to}
+              to={l.to}
+              end={l.to === "/"}
+              className={({ isActive }) => `${base} ${isActive ? active : idle}`}
+            >
+              {l.label}
+            </NavLink>
+          ))}
         </div>
       </nav>
     </header>
