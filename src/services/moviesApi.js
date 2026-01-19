@@ -15,3 +15,8 @@ export async function getMovieById(id) {
   const res = await api.get(`/movies/${id}`);
   return res.data;
 }
+
+export async function createMovie(payload) {
+  const res = await api.post("/movies", payload);
+  return res.data;
+}
