@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllMovies } from "../services/moviesApi";
+import { Link } from "react-router-dom";
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
@@ -15,7 +16,9 @@ export default function Movies() {
         setMovies(data);
       } catch (err) {
         console.error(err);
-        setErrorMsg("No se pudieron cargar las películas. ¿Está encendido JSON Server?");
+        setErrorMsg(
+          "No se pudieron cargar las películas. ¿Está encendido JSON Server?",
+        );
       } finally {
         setLoading(false);
       }
@@ -39,7 +42,9 @@ export default function Movies() {
       <ul>
         {movies.map((m) => (
           <li key={m.id}>
-            {m.title} ({m.year}) — {m.genre}
+            <Link to={`/movies/${m.id}`}>
+              {m.title} ({m.year}) — {m.genre}
+            </Link>
           </li>
         ))}
       </ul>
