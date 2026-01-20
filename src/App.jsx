@@ -8,6 +8,7 @@ import EditMovie from "./pages/EditMovie";
 import Location from "./pages/Location";
 import MovieDetail from "./pages/MovieDetail";
 
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -17,8 +18,8 @@ export default function App() {
           <Route path="/movies" element={<Movies />} />
           <Route path="/add-movie" element={<AddMovie />} />
           <Route path="/edit-movie/:id" element={<EditMovie />} />
-          <Route path="/movies/:id" element={<MovieDetail />} />
           <Route path="/location" element={<Location />} />
+          <Route path="/movies/:id" element={<MovieDetail />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Layout>
