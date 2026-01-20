@@ -428,48 +428,48 @@
       "synopsis": "En el clímax de la Guerra del Grial, Shirou debe elegir qué salvar cuando todo lo que ama queda al borde del abismo."
     },
     {
-    "id": "grave-fireflies",
-    "title": "Grave of the Fireflies",
-    "year": 1988,
-    "duration": 89,
-    "genre": "Drama",
-    "studio": "Studio Ghibli",
-    "rating": 8.5,
-    "poster": "https://cdn.myanimelist.net/images/anime/1485/141208.jpg",
-    "synopsis": "Durante los últimos meses de la Segunda Guerra Mundial, dos hermanos huérfanos luchan por sobrevivir en un Japón devastado por los bombardeos."
+      "id": "grave-fireflies",
+      "title": "Grave of the Fireflies",
+      "year": 1988,
+      "duration": 89,
+      "genre": "Drama",
+      "studio": "Studio Ghibli",
+      "rating": 8.5,
+      "poster": "https://cdn.myanimelist.net/images/anime/1485/141208.jpg",
+      "synopsis": "Durante los últimos meses de la Segunda Guerra Mundial, dos hermanos huérfanos luchan por sobrevivir en un Japón devastado por los bombardeos."
     },
     {
-    "id": "millennium-actress",
-    "title": "Millennium Actress",
-    "year": 2001,
-    "duration": 87,
-    "genre": "Drama",
-    "studio": "Madhouse",
-    "rating": 8.2,
-    "poster": "https://cdn.myanimelist.net/images/anime/1648/93626.jpg",
-    "synopsis": "Un documentalista entrevista a una legendaria actriz retirada, reviviendo su vida a través de recuerdos que se mezclan con los papeles que interpretó en el cine."
+      "id": "millennium-actress",
+      "title": "Millennium Actress",
+      "year": 2001,
+      "duration": 87,
+      "genre": "Drama",
+      "studio": "Madhouse",
+      "rating": 8.2,
+      "poster": "https://cdn.myanimelist.net/images/anime/1648/93626.jpg",
+      "synopsis": "Un documentalista entrevista a una legendaria actriz retirada, reviviendo su vida a través de recuerdos que se mezclan con los papeles que interpretó en el cine."
     },
     {
-    "id": "princess-kaguya",
-    "title": "The Tale of the Princess Kaguya",
-    "year": 2013,
-    "duration": 137,
-    "genre": "Fantasia",
-    "studio": "Studio Ghibli",
-    "rating": 8.1,
-    "poster": "https://cdn.myanimelist.net/images/anime/1935/93606.jpg",
-    "synopsis": "Basada en un cuento popular japonés, narra la historia de una misteriosa niña encontrada dentro de un bambú que crece rápidamente y cautiva a todos con su belleza."
+      "id": "princess-kaguya",
+      "title": "The Tale of the Princess Kaguya",
+      "year": 2013,
+      "duration": 137,
+      "genre": "Fantasia",
+      "studio": "Studio Ghibli",
+      "rating": 8.1,
+      "poster": "https://cdn.myanimelist.net/images/anime/1935/93606.jpg",
+      "synopsis": "Basada en un cuento popular japonés, narra la historia de una misteriosa niña encontrada dentro de un bambú que crece rápidamente y cautiva a todos con su belleza."
     },
     {
-    "id": "josee-tiger-fish",
-    "title": "Josee, the Tiger and the Fish",
-    "year": 2020,
-    "duration": 98,
-    "genre": "Romance",
-    "studio": "Bones",
-    "rating": 8.0,
-    "poster": "https://cdn.myanimelist.net/images/anime/1714/108892.jpg",
-    "synopsis": "Una joven con discapacidad y un estudiante universitario desarrollan una relación profunda que les obliga a enfrentarse a sus miedos, sueños y al futuro."
+      "id": "josee-tiger-fish",
+      "title": "Josee, the Tiger and the Fish",
+      "year": 2020,
+      "duration": 98,
+      "genre": "Romance",
+      "studio": "Bones",
+      "rating": 8.0,
+      "poster": "https://cdn.myanimelist.net/images/anime/1714/108892.jpg",
+      "synopsis": "Una joven con discapacidad y un estudiante universitario desarrollan una relación profunda que les obliga a enfrentarse a sus miedos, sueños y al futuro."
     }
   ]
 }

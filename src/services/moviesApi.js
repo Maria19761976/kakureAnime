@@ -1,31 +1,27 @@
 import axios from "axios";
 
-const api = axios.create({
-  baseURL: "http://localhost:3001",
-});
+const API_URL = "http://localhost:3001/movies";
 
-export default api;
+export const getAllMovies = async () => {
+  const response = await axios.get(API_URL);
+  return response.data;
+};
 
-export async function getAllMovies() {
-  const res = await api.get("/movies");
-  return res.data;
-}
+export const getMovieById = async (id) => {
+  const response = await axios.get(`${API_URL}/${id}`);
+  return response.data;
+};
 
-export async function getMovieById(id) {
-  const res = await api.get(`/movies/${id}`);
-  return res.data;
-}
+export const createMovie = async (movie) => {
+  const response = await axios.post(API_URL, movie);
+  return response.data;
+};
 
-export async function createMovie(payload) {
-  const res = await api.post("/movies", payload);
-  return res.data;
-}
+export const updateMovie = async (id, movie) => {
+  const response = await axios.put(`${API_URL}/${id}`, movie);
+  return response.data;
+};
 
-export async function updateMovie(id, payload) {
-  const res = await api.put(`/movies/${id}`, payload);
-  return res.data;
-}
-
-export async function deleteMovie(id) {
-  await api.delete(`/movies/${id}`);
-}
+export const deleteMovie = async (id) => {
+  await axios.delete(`${API_URL}/${id}`);
+};

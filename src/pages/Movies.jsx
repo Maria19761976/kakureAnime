@@ -26,7 +26,9 @@ export default function Movies() {
       setMovies(data);
     } catch (err) {
       console.error(err);
-      setErrorMsg("No se pudieron cargar las películas. ¿Está encendido JSON Server?");
+      setErrorMsg(
+        "No se pudieron cargar las películas. ¿Está encendido JSON Server?",
+      );
     } finally {
       setLoading(false);
     }
@@ -58,7 +60,9 @@ export default function Movies() {
   }, [movies]);
 
   const years = useMemo(() => {
-    const y = new Set(movies.map((m) => m.year).filter((v) => v !== undefined && v !== null));
+    const y = new Set(
+      movies.map((m) => m.year).filter((v) => v !== undefined && v !== null),
+    );
     return ["ALL", ...Array.from(y).sort((a, b) => b - a)];
   }, [movies]);
 
@@ -107,9 +111,13 @@ export default function Movies() {
 
             <p className="mt-2 text-xs text-slate-300/60">
               Mostrando{" "}
-              <span className="font-semibold text-amber-50">{filtered.length}</span>{" "}
+              <span className="font-semibold text-amber-50">
+                {filtered.length}
+              </span>{" "}
               de{" "}
-              <span className="font-semibold text-amber-50">{movies.length}</span>{" "}
+              <span className="font-semibold text-amber-50">
+                {movies.length}
+              </span>{" "}
               películas
             </p>
           </div>
@@ -167,6 +175,7 @@ export default function Movies() {
         </div>
       </div>
 
+      {}
       {filtered.length === 0 ? (
         <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-zinc-300">
           No hay resultados con los filtros actuales.

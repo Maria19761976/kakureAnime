@@ -8,7 +8,6 @@ import EditMovie from "./pages/EditMovie";
 import Location from "./pages/Location";
 import MovieDetail from "./pages/MovieDetail";
 
-
 export default function App() {
   return (
     <BrowserRouter>
