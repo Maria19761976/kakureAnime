@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getMovieById } from "../services/moviesApi";
 
 export default function MovieDetail() {
@@ -10,10 +10,8 @@ export default function MovieDetail() {
   const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
-    async function load() {
+    const load = async () => {
       try {
-        setLoading(true);
-        setErrorMsg("");
         const data = await getMovieById(id);
         setMovie(data);
       } catch (err) {
@@ -22,92 +20,62 @@ export default function MovieDetail() {
       } finally {
         setLoading(false);
       }
-    }
+    };
     load();
   }, [id]);
 
-  if (loading) return <p className="text-slate-200/70">Cargando detalle...</p>;
+  if (loading) return <p className="text-zinc-400">Cargando detalle...</p>;
 
-  if (errorMsg) {
+  if (!movie) {
     return (
       <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-red-200">
-        {errorMsg}
+        {errorMsg || "No encontrada."}
       </div>
     );
   }
 
-  if (!movie) return <p className="text-slate-200/70">No existe esta película.</p>;
-
   return (
-    <section className="space-y-5">
-      <div className="flex items-center justify-between">
+    <section className="space-y-6">
+      <div className="flex items-center justify-between gap-4">
+        <div>
+          <h2 className="text-2xl md:text-3xl font-semibold">{movie.title}</h2>
+          <p className="text-sm text-zinc-400">
+            {movie.year} · {movie.genre} · {movie.duration} min · ⭐ {movie.rating}
+          </p>
+        </div>
+
         <Link
           to="/movies"
-          className="text-sm font-semibold text-amber-100/90 hover:text-amber-50"
+          className="rounded-xl border border-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/5"
         >
-          ← Volver al catálogo
-        </Link>
-
-        <Link
-          to={`/edit-movie/${movie.id}`}
-          className="rounded-xl border border-amber-200/15 px-4 py-2 text-sm font-semibold text-slate-100 hover:bg-white/5 transition"
-        >
-          Editar
+          Volver
         </Link>
       </div>
 
-      <div className="rounded-2xl border border-amber-200/15 bg-slate-800/35 p-5 sm:p-7">
-        <div className="grid gap-6 md:grid-cols-[320px_1fr]">
-          {/* Poster */}
-          <div className="overflow-hidden rounded-2xl border border-amber-200/10 bg-slate-900/30">
+      <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-6">
+        <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+          <div className="aspect-[2/3] bg-black/40">
             <img
               src={movie.poster}
               alt={movie.title}
-              onError={(e) => {
-                e.currentTarget.src =
-                  "https://placehold.co/600x900?text=Kakure+Anime";
-              }}
               className="h-full w-full object-cover"
             />
           </div>
-
-          {/* Info */}
-          <div className="space-y-4">
-            <div>
-              <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-amber-50">
-                {movie.title}
-              </h1>
-
-              <p className="mt-2 text-sm text-slate-200/70">
-                {movie.year} · {movie.genre}
-                {movie.studio ? ` · ${movie.studio}` : ""}
-                {movie.duration ? ` · ${movie.duration} min` : ""}
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-2">
-              <span className="inline-flex items-center gap-1 rounded-full border border-amber-200/20 bg-slate-900/60 px-3 py-1 text-xs font-semibold text-amber-100">
-                ★ {movie.rating ? Number(movie.rating).toFixed(1) : "—"}
-              </span>
-
-              <span className="inline-flex rounded-full border border-amber-200/15 bg-white/5 px-3 py-1 text-xs font-semibold text-slate-100/85">
-                {movie.genre}
-              </span>
-
-              {movie.studio ? (
-                <span className="inline-flex rounded-full border border-amber-200/15 bg-white/5 px-3 py-1 text-xs font-semibold text-slate-100/85">
-                  {movie.studio}
-                </span>
-              ) : null}
-            </div>
-
-            <div className="rounded-2xl border border-amber-200/10 bg-slate-900/30 p-4">
-              <h3 className="text-sm font-semibold text-amber-50">Sinopsis</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-200/75">
-                {movie.synopsis || "Sin sinopsis."}
-              </p>
-            </div>
+          <div className="p-4 text-sm text-zinc-300 space-y-1">
+            <p>
+              <span className="text-zinc-400">Studio:</span> {movie.studio || "—"}
+            </p>
+            <p>
+              <span className="text-zinc-400">ID:</span> {movie.id}
+            </p>
           </div>
+        </div>
+
+        <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <h3 className="text-lg font-semibold mb-2">Sinopsis</h3>
+          <p className="text-zinc-300 leading-relaxed whitespace-pre-line">
+            {movie.synopsis || "Sinopsis no disponible."}
+          </p>
         </div>
       </div>
     </section>
