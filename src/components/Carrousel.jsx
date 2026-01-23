@@ -1,31 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const Carrousel = ({ type = 'popular', currentGenre = '' }) => {
+const Carrousel = ({ genre = '', studio = '', limit = 0 }) => {
     const [movies, setMovies] = useState([]);
-    const [currentIndex, setCurrentIndex] = useState(0);
     const [loading, setLoading] = useState(true);
+    const [currentIndex, setCurrentIndex] = useState(0);
 
-    // Determines how many items to show based on screen width
-    // In a real project, you could use a custom hook for window size
-    const itemsToShow = {
-        mobile: 1,
-        tablet: 3,
-        desktop: 4
-    };
-
-    const fetchMoviesData = async () => {
+const fetchMoviesData = async () => {
         try {
-            // Updated to port 3001 as per your requirement
             const response = await axios.get('http://localhost:3001/movies');
-            let data = response.data;
 
-            if (type === 'related' && currentGenre) {
-                data = data.filter(m => m.genre === currentGenre);
-            }
-            
+            let data = response.data;
+            if (genre) data = data.filter(m => m.genre === genre);
+            if (studio) data = data.filter(m => m.studio === studio);
+            if (limit > 0) data = data.slice(0, limit);
             setMovies(data);
             setLoading(false);
+
         } catch (error) {
             console.error("Error fetching movies:", error);
             setLoading(false);
@@ -34,102 +25,59 @@ const Carrousel = ({ type = 'popular', currentGenre = '' }) => {
 
     useEffect(() => {
         fetchMoviesData();
-    }, [type, currentGenre]);
+    }, [genre, studio, limit]);
 
     const handleNext = () => {
-        setCurrentIndex((prevIndex) => {
-            // Prevents sliding past the end
-            const lastIndex = movies.length - 1;
-            return prevIndex === lastIndex ? 0 : prevIndex + 1;
-        });
+        setCurrentIndex((prevIndex) => 
+            prevIndex === movies.length - 1 ? 0 : prevIndex + 1
+        );
     };
 
     const handlePrev = () => {
-        setCurrentIndex((prevIndex) => {
-            const lastIndex = movies.length - 1;
-            return prevIndex === 0 ? lastIndex : prevIndex - 1;
-        });
+        setCurrentIndex((prevIndex) => 
+            prevIndex === 0 ? movies.length - 1 : prevIndex - 1
+        );
     };
 
-    if (loading) {
-        return <div className="text-center p-10 text-amber-200/50">Cargando catálogo...</div>;
-    }
-
-    if (movies.length === 0) {
-        return <div className="text-center p-10 text-slate-400">No se encontraron películas similares.</div>;
-    }
+    if (loading) return <p className="text-white text-center">Loading...</p>;
+    if (movies.length === 0) return <p className="text-white">No movies found.</p>;
 
     return (
-        <section className="w-full space-y-4">
-            <div className="flex items-center justify-between px-2">
-                <h2 className="text-xl font-semibold text-amber-50">
-                    {type === 'popular' ? '✨ Destacados para ti' : '🎬 Más contenido similar'}
-                </h2>
-                <div className="flex gap-2">
-                    <button 
-                        onClick={handlePrev}
-                        className="rounded-lg border border-amber-200/15 bg-slate-800/50 p-2 text-amber-50 hover:bg-amber-200/10 transition-colors"
-                    >
-                        ❮
-                    </button>
-                    <button 
-                        onClick={handleNext}
-                        className="rounded-lg border border-amber-200/15 bg-slate-800/50 p-2 text-amber-50 hover:bg-amber-200/10 transition-colors"
-                    >
-                        ❯
-                    </button>
-                </div>
-            </div>
+        <div className="relative w-full overflow-hidden p-4">
+            <h2 className="text-xl font-bold text-white mb-4">
+                {studio ? `Studio: ${studio}` : genre ? `Genre: ${genre}` : 'Movies'}
+            </h2>
 
-            {/* Carousel Window */}
-            <div className="relative w-full overflow-hidden rounded-3xl border border-amber-200/10 bg-slate-900/20 p-4">
-                <div 
-                    className="flex transition-transform duration-500 ease-in-out"
-                    style={{ 
-                        // Logic: Move by (100% / items_visible) * currentIndex
-                        // Simplified for 1 item per view for clarity, but responsive in CSS
-                        transform: `translateX(-${currentIndex * 100}%)` 
-                    }}
+            <div className="flex items-center">
+                <button 
+                    onClick={handlePrev} 
+                    className="absolute left-0 z-10 bg-black/50 text-white p-2 rounded-full hover:bg-black/80"
                 >
-                    {movies.map((movie) => (
-                        <div 
-                            key={movie.id} 
-                            className="min-w-full flex-shrink-0 px-2 sm:min-w-[50%] lg:min-w-[33.333%]"
-                        >
-                            <div className="group relative overflow-hidden rounded-2xl border border-amber-200/10 bg-slate-800/40 transition-all hover:border-amber-200/30">
+                </button>
+
+                <div className="w-full overflow-hidden">
+                    <div 
+                        className="flex transition-transform duration-500 ease-in-out"
+                        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                    >
+                        {movies.map((movie) => (
+                            <div key={movie.id} className="min-w-full p-2 text-white text-center">
                                 <img 
                                     src={movie.poster} 
                                     alt={movie.title} 
-                                    className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-110 sm:h-80"
+                                    className="w-full h-64 object-cover rounded-lg"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
-                                <div className="absolute bottom-0 p-4 w-full">
-                                    <span className="text-[10px] font-bold uppercase tracking-widest text-amber-300/80">
-                                        {movie.genre}
-                                    </span>
-                                    <h3 className="mt-1 text-base font-semibold text-amber-50 truncate">
-                                        {movie.title}
-                                    </h3>
-                                </div>
+                                <h3 className="mt-2 text-lg font-semibold">{movie.title}</h3>
+                                <p className="text-sm text-gray-400">{movie.studio} - {movie.genre}</p>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
+
+                <button onClick={handleNext} className="absolute right-0 z-10 bg-black/50 text-white p-2 rounded-full hover:bg-black/80">
+                </button>
             </div>
-            
-            {/* Progress dots */}
-            <div className="flex justify-center gap-1.5 pt-2">
-                {movies.map((_, index) => (
-                    <button
-                        key={index}
-                        onClick={() => setCurrentIndex(index)}
-                        className={`h-1 rounded-full transition-all ${
-                            currentIndex === index ? 'w-6 bg-amber-300/70' : 'w-2 bg-slate-700'
-                        }`}
-                    />
-                ))}
-            </div>
-        </section>
+        </div>
     );
 };
 
