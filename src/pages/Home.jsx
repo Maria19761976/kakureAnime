@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Carrousel from "../components/Carrousel";
 
 export default function Home() {
   return (
@@ -115,6 +116,7 @@ export default function Home() {
           desc="Información clara para decidir en un vistazo."
         />
       </div>
+      <Carrousel/>
     </section>
   );
 }
