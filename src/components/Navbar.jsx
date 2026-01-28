@@ -2,9 +2,9 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const links = [
-  { to: "/", label: "Home" },
-  { to: "/movies", label: "Movies" },
-  { to: "/add-movie", label: "Agregar peli" },
+  { to: "/", label: "Inicio" },
+  { to: "/movies", label: "Películas" },
+  { to: "/add-movie", label: "Agregar película" },
   { to: "/location", label: "Ubicación" },
 ];
 
