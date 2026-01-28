@@ -1,8 +1,8 @@
 import Navbar from "./Navbar";
 
 export default function Layout({ children }) {
-  return (
-    <div className="min-h-dvh bg-slate-900 text-slate-100 flex flex-col">
+  return (                  /*bg-blue-600*/
+    <div className="min-h-dvh bg-blue-600 text-slate-100 flex flex-col">
       <Navbar />
 
       {/* Contenido principal que empuja el footer */}

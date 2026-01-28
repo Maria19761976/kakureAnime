@@ -148,7 +148,7 @@ export default function AddMovie() {
           <button
             type="submit"
             disabled={saving}
-            className="rounded-xl bg-lime-500 px-4 py-2 text-sm font-semibold text-black hover:opacity-70 disabled:opacity-50"
+            className="rounded-xl bg-lime-300 px-4 py-2 text-sm font-semibold text-black hover:bg-lime-400 disabled:opacity-50"
           >
             {saving ? "Guardando..." : "Guardar"}
           </button>
