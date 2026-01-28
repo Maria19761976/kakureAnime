@@ -1,7 +1,7 @@
 import Navbar from "./Navbar";
 
 export default function Layout({ children }) {
-  return (                  /*bg-blue-600*/
+  return (
     <div className="min-h-dvh bg-blue-600 text-slate-100 flex flex-col">
       <Navbar />
 
