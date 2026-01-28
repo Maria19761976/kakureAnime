@@ -1,19 +1,18 @@
-// src/pages/Location.jsx
 import { Link } from "react-router-dom";
 
 export default function Location() {
   return (
     <section className="space-y-10">
-      {/* Hero */}
+      {}
       <div className="relative overflow-hidden rounded-3xl border border-amber-200/15 bg-slate-800/35 p-6 sm:p-10">
-        {/* blobs decorativos */}
+        {}
         <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-amber-300/10 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-amber-300/10 blur-3xl" />
 
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-200/25 to-transparent" />
 
         <div className="relative grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          {/* Texto */}
+          {}
           <div className="space-y-4">
             <p className="inline-flex items-center gap-2 rounded-full border border-amber-200/15 bg-slate-900/20 px-3 py-1 text-xs text-slate-200/80">
               <span className="h-1.5 w-1.5 rounded-full bg-amber-300/70" />
@@ -47,7 +46,7 @@ export default function Location() {
             </div>
           </div>
 
-          {/* Tarjeta info */}
+          {}
           <div className="relative">
             <div className="rounded-3xl border border-amber-200/15 bg-slate-900/20 p-5 space-y-4">
               <div>
@@ -79,7 +78,7 @@ export default function Location() {
         </div>
       </div>
 
-      {/* Mapa + notas */}
+      {}
       <div className="grid gap-4 md:grid-cols-3">
         <div className="md:col-span-2 overflow-hidden rounded-2xl border border-amber-200/10 bg-slate-900/15">
           <div className="p-5">
