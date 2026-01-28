@@ -55,7 +55,6 @@ export default function AddMovie() {
 
   return (
     <section className="max-w-3xl">
-      <h2 className="text-2xl font-semibold mb-6">Agregar peli</h2>
 
       {errorMsg && (
         <div className="mb-4 rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-red-200">
@@ -65,8 +64,9 @@ export default function AddMovie() {
 
       <form
         onSubmit={handleSubmit}
-        className="space-y-4 rounded-2xl border border-white/10 bg-white/5 p-6"
+        className="space-y-4 rounded-2xl border border-white/10 bg-blue-400 p-6"
       >
+        <h2 className="text-3xl font-bold mb-4 b text-lime-300">Agregar peli</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Field
             label="Título"
@@ -100,7 +100,7 @@ export default function AddMovie() {
               name="genre"
               value={form.genre}
               onChange={handleChange}
-              className="w-full rounded-xl border border-white/10 bg-zinc-950/60 px-3 py-2 outline-none focus:border-fuchsia-500/40"
+              className="w-full rounded-xl bg-blue-500 px-3 py-2 outline-none focus:border-fuchsia-500/40"
             >
               <option>Accion</option>
               <option>Aventura</option>
@@ -139,7 +139,7 @@ export default function AddMovie() {
             value={form.synopsis}
             onChange={handleChange}
             rows={4}
-            className="w-full rounded-xl border border-white/10 bg-zinc-950/60 px-3 py-2 outline-none focus:border-fuchsia-500/40"
+            className="w-full rounded-xl border border-white/10 bg-blue-500 px-3 py-2 outline-none focus:focus:border-lime-300"
             placeholder="Escribe una sinopsis breve..."
           />
         </div>
@@ -148,7 +148,7 @@ export default function AddMovie() {
           <button
             type="submit"
             disabled={saving}
-            className="rounded-xl bg-fuchsia-500 px-4 py-2 text-sm font-semibold text-black hover:opacity-90 disabled:opacity-50"
+            className="rounded-xl bg-lime-300 px-4 py-2 text-sm font-semibold text-black hover:bg-lime-400 disabled:opacity-50"
           >
             {saving ? "Guardando..." : "Guardar"}
           </button>
@@ -156,7 +156,7 @@ export default function AddMovie() {
           <button
             type="button"
             onClick={() => navigate("/movies")}
-            className="rounded-xl border border-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/5"
+            className="rounded-xl border-2 border-lime-400 px-4 py-2 text-sm font-semibold hover:bg-white/5"
           >
             Cancelar
           </button>
@@ -185,7 +185,7 @@ function Field({
         type={type}
         step={step}
         placeholder={placeholder}
-        className="w-full rounded-xl border border-white/10 bg-zinc-950/60 px-3 py-2 outline-none focus:border-fuchsia-500/40"
+        className="w-full rounded-xl border border-white/10 bg-blue-500 px-3 py-2 outline-none focus:border-lime-300"
       />
     </div>
   );
