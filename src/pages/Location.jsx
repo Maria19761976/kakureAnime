@@ -152,3 +152,18 @@ const handleChange = (e) => {
     <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/10" />
   </div>
 </div>
+function ContactInfoCard({ icon, title, info }) {
+  return (
+    <div className="rounded-2xl border border-gray-900/20 bg-gray-900/10 p-5 backdrop-blur-sm transition-transform hover:scale-[1.02]">
+      <div className="mb-3 text-3xl">{icon}</div>
+      <h3 className="mb-3 text-lg font-bold text-gray-900">{title}</h3>
+      <div className="space-y-1">
+        {info.map((line, index) => (
+          <p key={index} className="text-sm text-gray-800">
+            {line}
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+}
