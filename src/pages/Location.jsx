@@ -167,3 +167,39 @@ function ContactInfoCard({ icon, title, info }) {
     </div>
   );
 }
+{/* Contact Information Section - Color #BBF451 */}
+<div className="relative overflow-hidden rounded-3xl border border-white/20 p-8" style={{ backgroundColor: '#BBF451' }}>
+  {/* Decorative elements */}
+  <div className="pointer-events-none absolute -top-20 -left-20 h-64 w-64 rounded-full bg-white/15 blur-3xl" />
+  <div className="pointer-events-none absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
+  
+  <div className="relative grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    {/* Dirección */}
+    <ContactInfoCard
+      icon="📍"
+      title="Dirección"
+      info={["Calle Anime 123", "03300 Orihuela", "Alicante, España"]}
+    />
+    
+    {/* Teléfono */}
+    <ContactInfoCard
+      icon="📞"
+      title="Teléfono"
+      info={["+34 965 123 456", "+34 612 345 678"]}
+    />
+    
+    {/* Correo */}
+    <ContactInfoCard
+      icon="📧"
+      title="Correo"
+      info={["info@kakureanime.com", "contacto@kakureanime.com"]}
+    />
+    
+    {/* Horario */}
+    <ContactInfoCard
+      icon="🕐"
+      title="Horario"
+      info={["Lun - Vie: 9:00 - 18:00", "Sáb: 10:00 - 14:00", "Dom: Cerrado"]}
+    />
+  </div>
+</div>
