@@ -18,7 +18,7 @@ export default function MovieCard({ movie, onDelete }) {
               e.currentTarget.src =
                 "https://placehold.co/600x900?text=Kakure+Anime";
             }}
-            className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.05]"
+            className="h-full w-full object-fill transition duration-300 group-hover:scale-[1.05]"
           />
 
           {}
@@ -61,7 +61,7 @@ export default function MovieCard({ movie, onDelete }) {
 
           <button
             onClick={() => onDelete(movie.id)}
-            className="rounded-xl bg-lime-400/70 px-3 py-2 text-xs sm:text-sm font-semibold text-black transition hover:bg-lime-300"
+            className="rounded-xl bg-lime-300/70 px-3 py-2 text-xs sm:text-sm font-semibold text-black transition hover:bg-lime-300"
           >
             Borrar
           </button>

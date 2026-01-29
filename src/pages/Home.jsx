@@ -55,9 +55,6 @@ export default function Home() {
             </div>
 
             {}
-            <p className="pt-2 text-xs text-slate-300/60">
-              Proyecto académico.
-            </p>
           </div>
 
           {}
