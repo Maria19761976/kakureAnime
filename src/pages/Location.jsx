@@ -203,3 +203,12 @@ function ContactInfoCard({ icon, title, info }) {
     />
   </div>
 </div>
+// Eliminar estas líneas:
+function StatPill({ label, value }) {
+  return (
+    <div className="rounded-2xl border border-gray-900/20 bg-gray-900/10 px-3 py-2 text-center">
+      <p className="text-[10px] font-medium text-gray-800">{label}</p>
+      <p className="mt-0.5 text-xs font-bold text-gray-900">{value}</p>
+    </div>
+  );
+}
