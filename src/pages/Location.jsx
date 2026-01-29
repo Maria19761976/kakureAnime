@@ -47,3 +47,64 @@ const handleChange = (e) => {
     [e.target.name]: e.target.value
   });
 };
+{/* Contact Form - Color #BBF451 */}
+<div className="relative overflow-hidden rounded-3xl border border-white/20 p-8" style={{ backgroundColor: '#BBF451' }}>
+  {/* Decorative elements */}
+  <div className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-white/15 blur-3xl" />
+  
+  <div className="relative space-y-6">
+    <div>
+      <h2 className="text-3xl font-bold text-gray-900">
+        Envía tu mensaje
+      </h2>
+      <p className="mt-2 text-gray-800">
+        Completa el formulario y te responderemos lo antes posible.
+      </p>
+    </div>
+
+    {/* Form */}
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div>
+        <label htmlFor="nombre" className="sr-only">Nombre</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          placeholder="Nombre"
+          value={formData.nombre}
+          onChange={handleChange}
+          required
+          className="w-full rounded-xl border-2 border-gray-900/20 bg-gray-900/10 px-4 py-3 text-gray-900 placeholder:text-gray-700/60 focus:border-gray-900/40 focus:outline-none focus:ring-2 focus:ring-gray-900/10"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="email" className="sr-only">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+          className="w-full rounded-xl border-2 border-gray-900/20 bg-gray-900/10 px-4 py-3 text-gray-900 placeholder:text-gray-700/60 focus:border-gray-900/40 focus:outline-none focus:ring-2 focus:ring-gray-900/10"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="asunto" className="sr-only">Asunto</label>
+        <input
+          type="text"
+          id="asunto"
+          name="asunto"
+          placeholder="Asunto"
+          value={formData.asunto}
+          onChange={handleChange}
+          required
+          className="w-full rounded-xl border-2 border-gray-900/20 bg-gray-900/10 px-4 py-3 text-gray-900 placeholder:text-gray-700/60 focus:border-gray-900/40 focus:outline-none focus:ring-2 focus:ring-gray-900/10"
+        />
+      </div>
+    </form>
+  </div>
+</div>
