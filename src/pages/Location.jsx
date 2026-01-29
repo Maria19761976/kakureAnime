@@ -11,7 +11,7 @@ export default function Location() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí iría la lógica de envío del formulario
+    
     console.log("Form submitted:", formData);
     alert("¡Mensaje enviado! Nos pondremos en contacto contigo pronto.");
     setFormData({ nombre: "", email: "", asunto: "", mensaje: "" });
@@ -26,13 +26,13 @@ export default function Location() {
 
   return (
     <section className="space-y-8" style={{ backgroundColor: '#2B7FFF', minHeight: '100vh', padding: '2rem 0' }}>
-      {/* Header - Color #50A2FF */}
+    
       <div className="relative overflow-hidden rounded-3xl border border-[#50A2FF]/30 p-8" style={{ backgroundColor: '#50A2FF' }}>
-        {/* Decorative glows */}
+      
         <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-white/5 blur-3xl" />
         
-        {/* Top border line */}
+    
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
 
         <div className="relative">
@@ -45,9 +45,9 @@ export default function Location() {
         </div>
       </div>
 
-      {/* Main Content Grid */}
+     
       <div className="grid gap-6 lg:grid-cols-2">
-        {/* Contact Form - Color #BBF451 */}
+       
         <div className="relative overflow-hidden rounded-3xl border border-white/20 p-8" style={{ backgroundColor: '#BBF451' }}>
           {/* Decorative elements */}
           <div className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-white/15 blur-3xl" />
@@ -62,7 +62,7 @@ export default function Location() {
               </p>
             </div>
 
-            {/* Form */}
+         
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="nombre" className="sr-only">Nombre</label>
@@ -130,13 +130,13 @@ export default function Location() {
           </div>
         </div>
 
-        {/* Map Section - Color #2B7FFF */}
+      
         <div className="relative overflow-hidden rounded-3xl border border-white/20" style={{ backgroundColor: '#2B7FFF' }}>
-          {/* Decorative glow */}
+        
           <div className="pointer-events-none absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-white/5 blur-3xl" />
           
           <div className="relative h-full min-h-[500px] lg:min-h-full">
-            {/* Map Container */}
+        
             <div className="absolute inset-0 overflow-hidden rounded-3xl">
               <iframe
                 title="Ubicación Kakure Anime"
@@ -151,41 +151,41 @@ export default function Location() {
               />
             </div>
 
-            {/* Map overlay decoration */}
+          
             <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/10" />
           </div>
         </div>
       </div>
 
-      {/* Contact Information Section - Color #BBF451 */}
+     
       <div className="relative overflow-hidden rounded-3xl border border-white/20 p-8" style={{ backgroundColor: '#BBF451' }}>
-        {/* Decorative elements */}
+      
         <div className="pointer-events-none absolute -top-20 -left-20 h-64 w-64 rounded-full bg-white/15 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
         
         <div className="relative grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Dirección */}
+       
           <ContactInfoCard
             icon="📍"
             title="Dirección"
             info={["Calle Anime 123", "03300 Orihuela", "Alicante, España"]}
           />
           
-          {/* Teléfono */}
+       
           <ContactInfoCard
             icon="📞"
             title="Teléfono"
             info={["+34 965 123 456", "+34 612 345 678"]}
           />
           
-          {/* Correo */}
+        
           <ContactInfoCard
             icon="📧"
             title="Correo"
             info={["info@kakureanime.com", "contacto@kakureanime.com"]}
           />
           
-          {/* Horario */}
+     
           <ContactInfoCard
             icon="🕐"
             title="Horario"
