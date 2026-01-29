@@ -106,5 +106,24 @@ const handleChange = (e) => {
         />
       </div>
     </form>
-  </div>
 </div>
+<div>
+  <label htmlFor="mensaje" className="sr-only">Mensaje</label>
+  <textarea
+    id="mensaje"
+    name="mensaje"
+    placeholder="Mensaje"
+    value={formData.mensaje}
+    onChange={handleChange}
+    required
+    rows={5}
+    className="w-full resize-none rounded-xl border-2 border-gray-900/20 bg-gray-900/10 px-4 py-3 text-gray-900 placeholder:text-gray-700/60 focus:border-gray-900/40 focus:outline-none focus:ring-2 focus:ring-gray-900/10"
+  />
+</div>
+
+<button
+  type="submit"
+  className="w-full rounded-xl border-2 border-white/40 bg-white px-6 py-3.5 font-bold text-gray-900 shadow-lg transition-all hover:bg-white/95 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+>
+  Enviar mensaje
+</button>
