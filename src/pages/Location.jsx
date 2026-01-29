@@ -26,3 +26,24 @@ export default function Location() {
     </p>
   </div>
 </div>
+const [formData, setFormData] = useState({
+  nombre: "",
+  email: "",
+  asunto: "",
+  mensaje: ""
+});
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  // Aquí iría la lógica de envío del formulario
+  console.log("Form submitted:", formData);
+  alert("¡Mensaje enviado! Nos pondremos en contacto contigo pronto.");
+  setFormData({ nombre: "", email: "", asunto: "", mensaje: "" });
+};
+
+const handleChange = (e) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value
+  });
+};
