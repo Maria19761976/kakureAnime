@@ -7,7 +7,7 @@ export default function MovieCard({ movie, onDelete }) {
     <article className="group relative overflow-hidden rounded-2xl border border-lime-400/10 bg-blue-400 transition will-change-transform hover:-translate-y-1 hover:border-amber-200/25 hover:shadow-[0_18px_60px_rgba(0,0,0,0.35)]">
       {}
       <Link to={`/movies/${movie.id}`} className="block">
-        <div className="relative aspect-[2/3] overflow-hidden bg-slate-950/20 ">
+        <div className="relative aspect-[2/3] overflow-hidden bg-slate-950/20">
           {}
           <div className="pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100 bg-gradient-to-t from-slate-950/60 via-slate-950/10 to-transparent" />
 
@@ -41,7 +41,7 @@ export default function MovieCard({ movie, onDelete }) {
       {}
       <div className="p-3 space-y-1.5">
         <Link to={`/movies/${movie.id}`}>
-          <h3 className="text-sm sm:text-base font-semibold leading-tight text-amber-50 transition group-hover:text-amber-100">
+          <h3 className="text-sm sm:text-base font-semibold leading-tight line-clamp-1 text-amber-50 transition group-hover:text-amber-100">
             {movie.title}
           </h3>
         </Link>

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import MovieCard from './MovieCard';
 
 const Carrousel = ({ genre = '', studio = '', limit = 0 }) => {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    const itemsPerPage = 3;
+    const itemsPerPage = 6;
     const maxPages = 3;
     const maxItems = itemsPerPage * maxPages;
 
