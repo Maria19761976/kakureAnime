@@ -127,3 +127,28 @@ const handleChange = (e) => {
 >
   Enviar mensaje
 </button>
+{/* Map Section - Color #2B7FFF */}
+<div className="relative overflow-hidden rounded-3xl border border-white/20" style={{ backgroundColor: '#2B7FFF' }}>
+  {/* Decorative glow */}
+  <div className="pointer-events-none absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-white/5 blur-3xl" />
+  
+  <div className="relative h-full min-h-[500px] lg:min-h-full">
+    {/* Map Container */}
+    <div className="absolute inset-0 overflow-hidden rounded-3xl">
+      <iframe
+        title="Ubicación Kakure Anime"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50449.57634446334!2d-0.9435468999999999!3d38.08888895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd63b7613562a515%3A0x40e0c801e0dbe40!2sOrihuela%2C%20Alicante%2C%20Spain!5e0!3m2!1sen!2s!4v1234567890"
+        width="100%"
+        height="100%"
+        style={{ border: 0 }}
+        allowFullScreen=""
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        className="brightness-95 contrast-110 saturate-110"
+      />
+    </div>
+
+    {/* Map overlay decoration */}
+    <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/10" />
+  </div>
+</div>
