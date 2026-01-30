@@ -107,3 +107,76 @@ export default function MovieDetail() {
     </section>
   );
 }
+return (
+  <section className="space-y-6">
+    {/* Hero Section - Poster + Title */}
+    <div className="relative overflow-hidden rounded-3xl border border-lime-500/15 bg-gradient-to-br from-slate-800/60 to-slate-900/60 p-8">
+      {/* Background decorations */}
+      <div className="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-lime-500/5 blur-3xl" />
+      
+      <div className="relative grid gap-8 lg:grid-cols-[300px_1fr] items-start">
+        {/* Poster */}
+        <div className="rounded-2xl overflow-hidden border border-cyan-200/20 bg-slate-900/40 p-3">
+          {movie.poster ? (
+            <img 
+              src={movie.poster} 
+              alt={movie.title}
+              className="w-full h-auto rounded-xl object-cover shadow-2xl"
+              onError={(e) => {
+                e.target.src = 'https://via.placeholder.com/300x450/1e293b/94a3b8?text=Sin+Poster';
+              }}
+            />
+          ) : (
+            <div className="flex items-center justify-center h-96 bg-slate-800/50 rounded-xl">
+              <p className="text-slate-400">Sin poster</p>
+            </div>
+          )}
+        </div>
+
+        {/* Title & Quote */}
+        <div className="space-y-4 flex flex-col justify-center">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-lime-400">
+            {movie.title}
+          </h1>
+          
+          {movie.quote && (
+            <blockquote className="border-l-4 border-amber-500 bg-amber-500/10 pl-6 py-3 italic text-amber-200/90 text-lg">
+              "{movie.quote}"
+            </blockquote>
+          )}
+
+          {/* Action Buttons */}
+          <div className="flex flex-wrap gap-3 pt-2">
+            <Link
+              to={`/edit-movie/${movie.id}`}
+              className="inline-flex items-center justify-center rounded-xl border border-lime-500/20 bg-lime-500/10 px-5 py-2.5 text-sm font-semibold text-lime-500 hover:bg-lime-500/15 transition-colors"
+            >
+              ✏️ Editar
+            </Link>
+
+            <button
+              onClick={handleDelete}
+              className="inline-flex items-center justify-center rounded-xl border border-pink-500/20 bg-pink-500/10 px-5 py-2.5 text-sm font-semibold text-pink-400 hover:bg-pink-500/15 transition-colors"
+            >
+              🗑️ Eliminar
+            </button>
+
+            <Link
+              to="/movies"
+              className="inline-flex items-center justify-center rounded-xl border border-slate-200/10 bg-slate-900/20 px-5 py-2.5 text-sm font-semibold text-slate-100 hover:bg-slate-900/30 transition-colors"
+            >
+              ← Catálogo
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Basic info section (temporal) */}
+    <div className="p-6 border border-gray-700 rounded-xl">
+      <p><strong>Año:</strong> {movie.year || 'N/A'}</p>
+      <p><strong>Género:</strong> {movie.genre || 'N/A'}</p>
+      <p><strong>Duración:</strong> {movie.duration || 0} min</p>
+    </div>
+  </section>
+);
