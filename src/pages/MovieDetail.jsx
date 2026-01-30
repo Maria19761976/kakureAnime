@@ -236,3 +236,55 @@ return (
     </div>
   </div>
 )}
+useEffect(() => {
+  const loadMovie = async () => {
+    try {
+      const data = await getMovieById(id);
+      setMovie(data);
+      
+      // Load all movies for related carousel
+      const movies = await getAllMovies();
+      setAllMovies(movies);
+    } catch (err) {
+      console.error(err);
+      setErrorMessage('No se pudo cargar la película. ¿Está encendido JSON Server?');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  loadMovie();
+}, [id]);
+const [allMovies, setAllMovies] = useState([]);
+{/* Related Movies Carousel */}
+{relatedMovies.length > 0 && (
+  <div className="space-y-4">
+    <h2 className="text-3xl font-bold text-amber-400">Películas relacionadas</h2>
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+      {relatedMovies.map((relatedMovie) => (
+        <Link
+          key={relatedMovie.id}
+          to={`/movies/${relatedMovie.id}`}
+          className="group"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          <div className="rounded-2xl border border-lime-500/10 bg-slate-800/40 p-3 hover:border-lime-500/30 hover:bg-slate-800/60 transition-all overflow-hidden">
+            <div className="aspect-[2/3] rounded-xl overflow-hidden mb-3">
+              <img
+                src={relatedMovie.poster || 'https://via.placeholder.com/200x300/1e293b/94a3b8?text=Sin+Poster'}
+                alt={relatedMovie.title}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                onError={(e) => {
+                  e.target.src = 'https://via.placeholder.com/200x300/1e293b/94a3b8?text=Sin+Poster';
+                }}
+              />
+            </div>
+            <p className="text-sm font-semibold text-slate-200 text-center line-clamp-2">
+              {relatedMovie.title}
+            </p>
+          </div>
+        </Link>
+      ))}
+    </div>
+  </div>
+)}
