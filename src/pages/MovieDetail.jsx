@@ -180,3 +180,36 @@ return (
     </div>
   </section>
 );
+{/* Synopsis Section */}
+<div className="rounded-3xl border border-coral-500/15 bg-gradient-to-br from-coral-500/5 to-slate-800/30 p-8">
+  <h2 className="text-2xl font-bold text-coral-400 mb-4 flex items-center gap-3">
+    <div className="h-1 w-12 bg-gradient-to-r from-coral-500 to-transparent rounded-full" />
+    Sinopsis
+  </h2>
+  <p className="text-slate-200/80 leading-relaxed text-lg">
+    {movie.synopsis || 'No hay sinopsis disponible.'}
+  </p>
+</div>
+
+{/* Stats & Details Grid */}
+<div className="grid lg:grid-cols-2 gap-6">
+  {/* Stats Card */}
+  <div className="rounded-3xl border border-amber-500/15 bg-slate-800/40 p-6">
+    <h3 className="text-xl font-bold text-amber-400 mb-4">Detalles</h3>
+    <div className="grid grid-cols-2 gap-3">
+      <StatCard label="Año" value={movie.year || 'N/A'} />
+      <StatCard label="Duración" value={`${movie.duration || 0} min`} />
+      <StatCard label="Estudio" value={movie.studio || 'N/A'} />
+      <StatCard label="Género" value={movie.genre || 'N/A'} />
+    </div>
+  </div>
+
+  {/* Rating Card */}
+  <div className="rounded-3xl border border-lime-500/15 bg-gradient-to-br from-lime-500/10 to-slate-800/40 p-6 flex flex-col items-center justify-center">
+    <p className="text-sm text-slate-300/70 mb-2">RATING</p>
+    <div className="text-7xl font-bold text-lime-400">
+      {movie.rating || '—'}
+    </div>
+    <p className="text-slate-300/60 mt-2">{movie.rating ? '/ 10' : 'Sin calificación'}</p>
+  </div>
+</div>
