@@ -4,10 +4,10 @@ export default function MovieCard({ movie, onDelete }) {
   const rating = Number(movie.rating || 0);
 
   return (
-    <article className="group relative overflow-hidden rounded-2xl border border-amber-200/10 bg-slate-800/35 transition will-change-transform hover:-translate-y-1 hover:border-amber-200/25 hover:shadow-[0_18px_60px_rgba(0,0,0,0.35)]">
+    <article className="group relative overflow-hidden rounded-2xl border border-lime-400/10 bg-blue-400 transition will-change-transform hover:-translate-y-1 hover:border-amber-200/25 hover:shadow-[0_18px_60px_rgba(0,0,0,0.35)]">
       {}
       <Link to={`/movies/${movie.id}`} className="block">
-        <div className="relative aspect-[2/3] overflow-hidden bg-slate-950/20 max-h-[360px]">
+        <div className="relative aspect-[2/3] overflow-hidden bg-slate-950/20">
           {}
           <div className="pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100 bg-gradient-to-t from-slate-950/60 via-slate-950/10 to-transparent" />
 
@@ -41,7 +41,7 @@ export default function MovieCard({ movie, onDelete }) {
       {}
       <div className="p-3 space-y-1.5">
         <Link to={`/movies/${movie.id}`}>
-          <h3 className="text-sm sm:text-base font-semibold leading-tight text-amber-50 transition group-hover:text-amber-100">
+          <h3 className="text-sm sm:text-base font-semibold leading-tight line-clamp-1 text-amber-50 transition group-hover:text-amber-100">
             {movie.title}
           </h3>
         </Link>
@@ -54,14 +54,14 @@ export default function MovieCard({ movie, onDelete }) {
         <div className="mt-3 grid grid-cols-2 gap-2">
           <Link
             to={`/edit-movie/${movie.id}`}
-            className="rounded-xl border border-amber-200/15 bg-white/0 px-3 py-2 text-center text-xs sm:text-sm font-semibold text-slate-100/90 transition hover:bg-white/5 hover:border-amber-200/25"
+            className="rounded-xl border-2 border-lime-400 bg-white/0 px-3 py-2 text-center text-xs sm:text-sm font-semibold text-slate-100/90 transition hover:bg-lime-300/50"
           >
             Editar
           </Link>
 
           <button
             onClick={() => onDelete(movie.id)}
-            className="rounded-xl bg-amber-200/90 px-3 py-2 text-xs sm:text-sm font-semibold text-slate-950 transition hover:bg-amber-200"
+            className="rounded-xl bg-lime-300/70 px-3 py-2 text-xs sm:text-sm font-semibold text-black transition hover:bg-lime-300"
           >
             Borrar
           </button>

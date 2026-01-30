@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import Movies from "./pages/Movies";
 import AddMovie from "./pages/AddMovie";
 import EditMovie from "./pages/EditMovie";
-import Location from "./pages/Location";
+import Location from "./pages/Location.jsx";
 import MovieDetail from "./pages/MovieDetail";
 
 export default function App() {
