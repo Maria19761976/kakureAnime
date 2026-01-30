@@ -213,3 +213,26 @@ return (
     <p className="text-slate-300/60 mt-2">{movie.rating ? '/ 10' : 'Sin calificación'}</p>
   </div>
 </div>
+{/* Gallery Section */}
+{movie.gallery && movie.gallery.length > 0 && (
+  <div className="space-y-4">
+    <h2 className="text-3xl font-bold text-lime-400">Galería</h2>
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      {movie.gallery.map((imgUrl, index) => (
+        <div 
+          key={index}
+          className="aspect-video rounded-2xl border border-cyan-200/15 bg-slate-900/20 overflow-hidden"
+        >
+          <img 
+            src={imgUrl} 
+            alt={`${movie.title} - Imagen ${index + 1}`}
+            className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+            onError={(e) => {
+              e.target.src = 'https://via.placeholder.com/400x250/1e293b/94a3b8?text=Imagen';
+            }}
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+)}
