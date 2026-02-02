@@ -2,7 +2,9 @@ import { useEffect, useMemo, useState } from "react";
 import { getAllMovies, deleteMovie } from "../services/moviesApi";
 import MovieCard from "../components/MovieCard";
 
+
 const LS_KEY = "kakure_movies_filters_v1";
+
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
@@ -16,9 +18,11 @@ export default function Movies() {
     }
   })();
 
+
   const [genre, setGenre] = useState(saved?.genre ?? "ALL");
   const [year, setYear] = useState(saved?.year ?? "ALL");
   const [query, setQuery] = useState(saved?.query ?? "");
+
 
   const loadMovies = async () => {
     try {
@@ -34,6 +38,7 @@ export default function Movies() {
     }
   };
 
+
   useEffect(() => {
     loadMovies();
   }, []);
@@ -41,9 +46,11 @@ export default function Movies() {
     localStorage.setItem(LS_KEY, JSON.stringify({ genre, year, query }));
   }, [genre, year, query]);
 
+
   const handleDelete = async (id) => {
     const ok = confirm("¿Seguro que quieres borrar esta película?");
     if (!ok) return;
+
 
     try {
       await deleteMovie(id);
@@ -54,10 +61,12 @@ export default function Movies() {
     }
   };
 
+
   const genres = useMemo(() => {
     const g = new Set(movies.map((m) => m.genre).filter(Boolean));
     return ["ALL", ...Array.from(g).sort()];
   }, [movies]);
+
 
   const years = useMemo(() => {
     const y = new Set(
@@ -65,6 +74,7 @@ export default function Movies() {
     );
     return ["ALL", ...Array.from(y).sort((a, b) => b - a)];
   }, [movies]);
+
 
   const filtered = useMemo(() => {
     return movies
@@ -81,13 +91,16 @@ export default function Movies() {
       });
   }, [movies, genre, year, query]);
 
+
   const resetFilters = () => {
     setGenre("ALL");
     setYear("ALL");
     setQuery("");
   };
 
+
   if (loading) return <p className="text-zinc-400">Cargando películas...</p>;
+
 
   if (errorMsg) {
     return (
@@ -96,6 +109,7 @@ export default function Movies() {
       </div>
     );
   }
+
 
   return (
     <section>
@@ -108,6 +122,7 @@ export default function Movies() {
             <p className="text-sm text-slate-200/80">
               Filtra por género/año o busca por título, estudio o sinopsis.
             </p>
+
 
             <p className="mt-2 text-xs text-slate-300/60">
               Mostrando{" "}
@@ -122,6 +137,7 @@ export default function Movies() {
             </p>
           </div>
 
+
           {}
           <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-4 md:w-auto">
             <div className="space-y-1 sm:col-span-2">
@@ -133,6 +149,7 @@ export default function Movies() {
                 className="w-full rounded-xl border border-amber-200/10 bg-slate-900/40 px-3 py-2 text-sm text-slate-100 outline-none placeholder:text-slate-400/60 focus:border-amber-400/40"
               />
             </div>
+
 
             <div className="space-y-1">
               <label className="text-xs text-slate-300/90">Género</label>
@@ -149,6 +166,7 @@ export default function Movies() {
               </select>
             </div>
 
+
             <div className="space-y-1">
               <label className="text-xs text-slate-300/90">Año</label>
               <select
@@ -164,6 +182,7 @@ export default function Movies() {
               </select>
             </div>
 
+
             <button
               type="button"
               onClick={resetFilters}
@@ -175,6 +194,7 @@ export default function Movies() {
         </div>
       </div>
 
+
       {}
       {filtered.length === 0 ? (
         <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-zinc-300">
@@ -183,10 +203,11 @@ export default function Movies() {
       ) : (
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-6">
           {filtered.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} onDelete={handleDelete} />
+            <MovieCard key={movie.id} movie={movie} onDelete={handleDelete} showControls/>
           ))}
         </div>
       )}
     </section>
   );
 }
+

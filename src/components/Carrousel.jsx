@@ -3,47 +3,64 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import MovieCard from './MovieCard';
 
-const Carrousel = ({ genre = '', studio = '', limit = 0 }) => {
+
+const Carrousel = ({ genre = '', studio = '', limit = 0 , items = ""}) => {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    const itemsPerPage = 6;
+
+    const itemsPerPage = Number(items) || 6;
     const maxPages = 3;
     const maxItems = itemsPerPage * maxPages;
+
+
+    const handleDelete = (id) => {
+        setMovies(prev => prev.filter(m => m.id !== id));
+    };
+
 
     const fetchMoviesData = async () => {
         try {
             const response = await axios.get('http://localhost:3001/movies');
 
+
             let data = response.data;
+
 
             if (!genre && !studio) {
                 data = [...data].sort(() => Math.random() - 0.5);
             }
 
-            if (genre) data = data.filter(m => m.genre === genre);
-            if (studio) data = data.filter(m => m.studio === studio);
+
+            if (genre) data = data.filter(movies => movies.genre === genre);
+            if (studio) data = data.filter(movies => movies.studio === studio);
+
 
         data = data.slice(0, maxItems);
 
+
         if (limit > 0) data = data.slice(0, limit);
+
 
             setMovies(data);
             setCurrentIndex(0);
             setLoading(false);
-        } 
+        }
         catch (error) {
             console.error('Error fetching movies:', error);
             setLoading(false);
         }
     };
 
+
     useEffect(() => {
     fetchMoviesData();
     }, [genre, studio, limit]);
 
+
     const totalPages = Math.ceil(movies.length / itemsPerPage);
+
 
     const handleNext = () => {
         setCurrentIndex(prev =>
@@ -51,14 +68,17 @@ const Carrousel = ({ genre = '', studio = '', limit = 0 }) => {
     );
     };
 
+
     const handlePrev = () => {
         setCurrentIndex(prev =>
         prev === 0 ? totalPages - 1 : prev - 1
         );
     };
 
+
     if (loading) return <p className="text-white text-center">Loading...</p>;
     if (movies.length === 0) return <p className="text-white">No movies found.</p>;
+
 
     return (
         <section className="w-full space-y-4">
@@ -85,22 +105,15 @@ const Carrousel = ({ genre = '', studio = '', limit = 0 }) => {
                     {Array.from({ length: totalPages }).map((_, pageIndex) => (
                         <div key={pageIndex} className="min-w-full flex">
                             {movies.slice( pageIndex * itemsPerPage, pageIndex * itemsPerPage + itemsPerPage ).map(movie => (
-                                <div key={movie.id} className="w-full px-2 sm:w-1 lg:w-1/3">
-                                    <div className="group relative overflow-hidden rounded-2xl border border-amber-200/10 bg-slate-800/40 transition-all hover:border-amber-200/30">
-                                        <img src={movie.poster} alt={movie.title} className="w-full object-cover transition-transform duration-500 group-hover:scale-110 sm:h-80"/>
-                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80"/>
-                                        <div className="absolute bottom-0 w-full p-4">
-                                            <p className="text-[10px] font-bold uppercase tracking-widest text-amber-300/80"> {movie.genre} </p>
-                                            <h3 className="mt-1 truncate text-base font-semibold text-amber-50">{movie.title} </h3>
-                                            <p className="text-xs text-slate-400">{movie.studio}</p>
-                                        </div>
-                                    </div>
+                                <div key={movie.id} className="w-full px-2 sm:w-1/2 lg:w-1/3">
+                                    <MovieCard key={movie.id} movie={movie} showControls={false}/>
                                 </div>
                             ))}
                         </div>
                     ))}
                 </div>
             </div>
+
 
             <div className="flex justify-center gap-1.5">
                 {Array.from({ length: totalPages }).map((_, index) => (
@@ -118,5 +131,6 @@ const Carrousel = ({ genre = '', studio = '', limit = 0 }) => {
         </section>
     );
 };
+
 
 export default Carrousel;
