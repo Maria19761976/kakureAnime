@@ -35,9 +35,6 @@ export default function Navbar() {
                 </span>
               </NavLink>
 
-              <span className="hidden sm:inline-flex rounded-full border border-lime-900/10 bg-lime-900/20 px-2.5 py-1 text-[11px] text-slate-200/70">
-                Proyecto académico
-              </span>
             </div>
 
             <nav className="hidden md:flex items-center gap-1">
