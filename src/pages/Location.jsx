@@ -49,7 +49,6 @@ export default function Location() {
       <div className="grid gap-6 lg:grid-cols-2">
        
         <div className="relative overflow-hidden rounded-3xl border border-white/20 p-8" style={{ backgroundColor: '#BBF451' }}>
-          {/* Decorative elements */}
           <div className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-white/15 blur-3xl" />
           
           <div className="relative space-y-6">
@@ -62,7 +61,6 @@ export default function Location() {
               </p>
             </div>
 
-         
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="nombre" className="sr-only">Nombre</label>
@@ -130,7 +128,6 @@ export default function Location() {
           </div>
         </div>
 
-      
         <div className="relative overflow-hidden rounded-3xl border border-white/20" style={{ backgroundColor: '#2B7FFF' }}>
         
           <div className="pointer-events-none absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-white/5 blur-3xl" />
@@ -151,13 +148,11 @@ export default function Location() {
               />
             </div>
 
-          
             <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/10" />
           </div>
         </div>
       </div>
 
-     
       <div className="relative overflow-hidden rounded-3xl border border-white/20 p-8" style={{ backgroundColor: '#BBF451' }}>
       
         <div className="pointer-events-none absolute -top-20 -left-20 h-64 w-64 rounded-full bg-white/15 blur-3xl" />
@@ -171,7 +166,6 @@ export default function Location() {
             info={["Calle Anime 123", "03300 Orihuela", "Alicante, España"]}
           />
           
-       
           <ContactInfoCard
             icon="📞"
             title="Teléfono"
@@ -185,7 +179,6 @@ export default function Location() {
             info={["info@kakureanime.com", "contacto@kakureanime.com"]}
           />
           
-     
           <ContactInfoCard
             icon="🕐"
             title="Horario"

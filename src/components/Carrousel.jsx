@@ -14,35 +14,22 @@ const Carrousel = ({ genre = '', studio = '', limit = 0 , items = ""}) => {
     const maxPages = 3;
     const maxItems = itemsPerPage * maxPages;
 
-
     const handleDelete = (id) => {
         setMovies(prev => prev.filter(m => m.id !== id));
     };
 
-
     const fetchMoviesData = async () => {
         try {
             const response = await axios.get('http://localhost:3001/movies');
-
-
             let data = response.data;
-
 
             if (!genre && !studio) {
                 data = [...data].sort(() => Math.random() - 0.5);
             }
-
-
             if (genre) data = data.filter(movies => movies.genre === genre);
             if (studio) data = data.filter(movies => movies.studio === studio);
-
-
         data = data.slice(0, maxItems);
-
-
         if (limit > 0) data = data.slice(0, limit);
-
-
             setMovies(data);
             setCurrentIndex(0);
             setLoading(false);
@@ -53,14 +40,11 @@ const Carrousel = ({ genre = '', studio = '', limit = 0 , items = ""}) => {
         }
     };
 
-
     useEffect(() => {
     fetchMoviesData();
     }, [genre, studio, limit]);
 
-
     const totalPages = Math.ceil(movies.length / itemsPerPage);
-
 
     const handleNext = () => {
         setCurrentIndex(prev =>
@@ -68,17 +52,14 @@ const Carrousel = ({ genre = '', studio = '', limit = 0 , items = ""}) => {
     );
     };
 
-
     const handlePrev = () => {
         setCurrentIndex(prev =>
         prev === 0 ? totalPages - 1 : prev - 1
         );
     };
 
-
     if (loading) return <p className="text-white text-center">Loading...</p>;
     if (movies.length === 0) return <p className="text-white">No movies found.</p>;
-
 
     return (
         <section className="w-full space-y-4">
@@ -114,7 +95,6 @@ const Carrousel = ({ genre = '', studio = '', limit = 0 , items = ""}) => {
                 </div>
             </div>
 
-
             <div className="flex justify-center gap-1.5">
                 {Array.from({ length: totalPages }).map((_, index) => (
                     <button
@@ -131,6 +111,5 @@ const Carrousel = ({ genre = '', studio = '', limit = 0 , items = ""}) => {
         </section>
     );
 };
-
 
 export default Carrousel;
