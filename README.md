@@ -1,6 +1,6 @@
 # 🎬✨ KakureAnime — React CRUD Video Club
 
-![KakureAnime Preview](./src/assets/kakureanime-preview.png)
+![Demo Kakure Anime](src/assets/img/DemoKakureAnime.png)
 
 KakureAnime is a modern **Single Page Application (SPA)** built with **React + Vite** that simulates a digital video club focused on anime and movie content.  
 It implements a **full CRUD workflow** connected to a mock REST API (**JSON Server**) and follows a clean, modular, and scalable frontend architecture, suitable for academic evaluation, portfolio presentation, and technical interviews
@@ -52,17 +52,22 @@ It implements a **full CRUD workflow** connected to a mock REST API (**JSON Serv
 ## 📁 Project Structure (Real)
 
 ```
-KAKUREANIME/
+KAKURE-ANIME
 ├── node_modules/
 ├── public/
 ├── src/
 │   ├── assets/
+│   │   ├── img/
+│   │   │   └── DemoKakureAnime.png
+│   │   └── react.svg
 │   ├── components/
+│   │   ├── .gitkeep
 │   │   ├── Carousel.jsx
 │   │   ├── Layout.jsx
 │   │   ├── MovieCard.jsx
 │   │   └── Navbar.jsx
 │   ├── pages/
+│   │   ├── .gitkeep
 │   │   ├── AddMovie.jsx
 │   │   ├── EditMovie.jsx
 │   │   ├── Home.jsx
@@ -70,17 +75,20 @@ KAKUREANIME/
 │   │   ├── MovieDetail.jsx
 │   │   └── Movies.jsx
 │   ├── services/
+│   │   ├── .gitkeep
 │   │   └── moviesApi.js
+│   ├── App.css
 │   ├── App.jsx
 │   ├── index.css
 │   └── main.jsx
+├── .gitignore
 ├── db.json
 ├── eslint.config.js
 ├── index.html
-├── package.json
 ├── package-lock.json
-├── vite.config.js
-└── README.md
+├── package.json
+├── README.md
+└── vite.config.js
 ```
 
 ---
