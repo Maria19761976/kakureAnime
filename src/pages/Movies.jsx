@@ -100,12 +100,12 @@ export default function Movies() {
   return (
     <section>
       {}
-      <div className="mb-6 rounded-2xl border border-amber-400/15 bg-slate-800/35 p-4">
+      <div className="mb-6 rounded-2xl border border-lime-400/15 bg-blue-400 p-4">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           {}
           <div>
-            <h2 className="text-2xl font-semibold text-amber-50">Movies</h2>
-            <p className="text-sm text-slate-300/80">
+            <h2 className="text-5xl font-bold text-lime-300 mb-1">Películas</h2>
+            <p className="text-sm text-slate-200/80">
               Filtra por género/año o busca por título, estudio o sinopsis.
             </p>
 
@@ -122,10 +122,9 @@ export default function Movies() {
             </p>
           </div>
 
-          {}
           <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-4 md:w-auto">
             <div className="space-y-1 sm:col-span-2">
-              <label className="text-xs text-slate-300/70">Buscar</label>
+              <label className="text-xs text-slate-300/90">Buscar</label>
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
@@ -135,7 +134,7 @@ export default function Movies() {
             </div>
 
             <div className="space-y-1">
-              <label className="text-xs text-slate-300/70">Género</label>
+              <label className="text-xs text-slate-300/90">Género</label>
               <select
                 value={genre}
                 onChange={(e) => setGenre(e.target.value)}
@@ -150,7 +149,7 @@ export default function Movies() {
             </div>
 
             <div className="space-y-1">
-              <label className="text-xs text-slate-300/70">Año</label>
+              <label className="text-xs text-slate-300/90">Año</label>
               <select
                 value={year}
                 onChange={(e) => setYear(e.target.value)}
@@ -167,7 +166,7 @@ export default function Movies() {
             <button
               type="button"
               onClick={resetFilters}
-              className="sm:col-span-4 rounded-xl border border-amber-200/10 px-4 py-2 text-sm font-semibold text-amber-50 hover:bg-white/5"
+              className="sm:col-span-4 rounded-xl border-2 border-lime-400 px-4 py-2 text-sm font-semibold text-amber-50 hover:bg-lime-400/30"
             >
               Reset filtros
             </button>
@@ -175,7 +174,7 @@ export default function Movies() {
         </div>
       </div>
 
-      {}
+
       {filtered.length === 0 ? (
         <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-zinc-300">
           No hay resultados con los filtros actuales.
@@ -183,7 +182,7 @@ export default function Movies() {
       ) : (
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-6">
           {filtered.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} onDelete={handleDelete} />
+            <MovieCard key={movie.id} movie={movie} onDelete={handleDelete} showControls/>
           ))}
         </div>
       )}

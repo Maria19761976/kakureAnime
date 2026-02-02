@@ -20,11 +20,10 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50">
-      {}
-      <div className="border-b border-amber-200/10 bg-slate-950/35 backdrop-blur supports-[backdrop-filter]:bg-slate-950/25">
+
+      <div className="border-b border-lime-700 bg-lime-300/70 backdrop-blur supports-[backdrop-filter]:bg-lime-300/80">
         <div className="mx-auto w-full max-w-[2200px] px-4 sm:px-6 lg:px-8 2xl:px-10">
           <div className="flex h-14 items-center justify-between gap-3">
-            {}
             <div className="flex items-center gap-3">
               <NavLink to="/" className="group inline-flex items-center gap-2">
                 <span className="relative grid h-8 w-8 place-items-center rounded-xl border border-amber-200/15 bg-amber-200/10">
@@ -36,19 +35,14 @@ export default function Navbar() {
                 </span>
               </NavLink>
 
-              <span className="hidden sm:inline-flex rounded-full border border-amber-200/10 bg-slate-900/20 px-2.5 py-1 text-[11px] text-slate-200/70">
-                Proyecto académico
-              </span>
             </div>
 
-            {}
             <nav className="hidden md:flex items-center gap-1">
               {links.map((l) => (
                 <NavItem key={l.to} to={l.to} label={l.label} />
               ))}
             </nav>
 
-            {}
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}

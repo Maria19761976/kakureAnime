@@ -1,148 +1,223 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { getMovieById, deleteMovie, getAllMovies } from '../services/moviesApi';
+import MovieCard from '../components/MovieCard';
 
-export default function Home() {
-  return (
-    <section className="space-y-10">
-      {}
-      <div className="relative overflow-hidden rounded-3xl border border-amber-200/15 bg-slate-800/35 p-6 sm:p-10">
-        {}
-        <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-amber-300/10 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-amber-300/10 blur-3xl" />
+export default function MovieDetail() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [movie, setMovie] = useState(null);
+  const [allMovies, setAllMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
 
-        {}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-200/25 to-transparent" />
+  useEffect(() => {
+    const loadMovie = async () => {
+      try {
+        const data = await getMovieById(id);
+        setMovie(data);
+        
+        const movies = await getAllMovies();
+        setAllMovies(movies);
+      } catch (err) {
+        console.error(err);
+        setErrorMessage('No se pudo cargar la película. ¿Está encendido JSON Server?');
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-        <div className="relative grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <div className="space-y-4">
-            {}
-            <p className="inline-flex items-center gap-2 rounded-full border border-amber-200/15 bg-slate-900/20 px-3 py-1 text-xs text-slate-200/80">
-              <span className="h-1.5 w-1.5 rounded-full bg-amber-300/70" />
-              Videoclub de anime • Catálogo curado
-            </p>
+    loadMovie();
+  }, [id]);
 
-            <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight text-amber-50">
-              Kakure Anime
-            </h1>
+  const handleDelete = async () => {
+    const isConfirmed = confirm('¿Seguro que quieres borrar esta película?');
+    if (!isConfirmed) return;
 
-            <p className="max-w-prose text-slate-200/80">
-              Descubre películas de anime recomendadas, filtra por género o año
-              y guarda tus favoritas para volver a ellas cuando quieras.
-            </p>
+    try {
+      await deleteMovie(id);
+      navigate('/movies');
+    } catch (err) {
+      console.error(err);
+      alert('No se pudo borrar la película.');
+    }
+  };
 
-            <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              <Link
-                to="/movies"
-                className="inline-flex items-center justify-center rounded-xl border border-amber-200/20 bg-amber-200/10 px-5 py-2.5 text-sm font-semibold text-amber-50 hover:bg-amber-200/15"
-              >
-                Explorar catálogo
-              </Link>
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <div className="text-center">
+          <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-solid border-lime-500 border-r-transparent"></div>
+          <p className="mt-4 text-slate-300">Cargando película...</p>
+        </div>
+      </div>
+    );
+  }
 
-              <Link
-                to="/add-movie"
-                className="inline-flex items-center justify-center rounded-xl border border-slate-200/10 bg-slate-900/20 px-5 py-2.5 text-sm font-semibold text-slate-100 hover:bg-slate-900/30"
-              >
-                Añadir recomendación
-              </Link>
-            </div>
+  if (errorMessage) {
+    return (
+      <div className="rounded-2xl border border-red-500/30 bg-red-500/10 p-6 text-red-200">
+        <p className="font-semibold mb-2">Error</p>
+        <p>{errorMessage}</p>
+        <Link 
+          to="/movies"
+          className="mt-4 inline-block text-sm text-red-300 hover:text-red-200 underline"
+        >
+          ← Volver al catálogo
+        </Link>
+      </div>
+    );
+  }
 
-            {}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6">
-              <Stat label="Colección" value="Películas" />
-              <Stat label="Filtros" value="Género y año" />
-              <Stat label="Búsqueda" value="Rápida" />
-              <Stat label="Experiencia" value="Premium" />
-            </div>
+  if (!movie) {
+    return (
+      <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-6 text-amber-200">
+        <p>Película no encontrada</p>
+        <Link 
+          to="/movies"
+          className="mt-4 inline-block text-sm text-amber-300 hover:text-amber-200 underline"
+        >
+          ← Volver al catálogo
+        </Link>
+      </div>
+    );
+  }
 
-            {}
-            <p className="pt-2 text-xs text-slate-300/60">
-              Proyecto académico.
-            </p>
-          </div>
+  const relatedMovies = allMovies
+    .filter(m => m.id !== movie.id && m.genre === movie.genre)
+    .slice(0, 6);
 
-          {}
-          <div className="relative">
-            <div className="rounded-3xl border border-amber-200/15 bg-slate-900/20 p-5">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-xs text-slate-300/70">Sugerencia de hoy</p>
-                  <h3 className="mt-1 text-lg font-semibold text-amber-50">
-                    Encuentra tu próxima película
-                  </h3>
-                </div>
-                <span className="rounded-full border border-amber-200/15 bg-amber-200/10 px-2.5 py-1 text-xs font-semibold text-amber-50">
-                  Tips
-                </span>
-              </div>
+  return (
+    <section className="space-y-6">
+      <div className="relative overflow-hidden rounded-3xl border border-lime-500/15 bg-gradient-to-br from-slate-800/60 to-slate-900/60 p-8">
+        <div className="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-lime-500/5 blur-3xl" />        
+        <div className="relative grid gap-8 lg:grid-cols-[300px_1fr] items-start">
+          <div className="rounded-2xl overflow-hidden border border-cyan-200/20 bg-slate-900/40 p-3">
+            {movie.poster ? (
+              <img 
+                src={movie.poster} 
+                alt={movie.title}
+                className="w-full h-auto rounded-xl object-cover shadow-2xl"
+                onError={(e) => {
+                  e.target.src = 'https://via.placeholder.com/300x450/1e293b/94a3b8?text=Sin+Poster';
+                }}
+              />
+            ) : (
+              <div className="flex items-center justify-center h-96 bg-slate-800/50 rounded-xl">
+                <p className="text-slate-400">Sin poster</p>
+              </div>
+            )}
+          </div>
 
-              <p className="mt-3 text-sm text-slate-200/75">
-                Usa los filtros para descubrir joyas de Studio Ghibli, clásicos
-                imprescindibles o películas modernas.
-              </p>
+          <div className="space-y-4 flex flex-col justify-center">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-lime-400">
+              {movie.title}
+            </h1>
+            
+            {movie.quote && (
+              <blockquote className="border-l-4 border-amber-500 bg-amber-500/10 pl-6 py-3 italic text-amber-200/90 text-lg">
+                "{movie.quote}"
+              </blockquote>
+            )}
 
-              <div className="mt-5 grid gap-3">
-                <Hint text="Busca por título o por estudio." />
-                <Hint text="Filtra por género y por año." />
-                <Hint text="Guarda tus preferencias para la próxima visita." />
-              </div>
+            <div className="flex flex-wrap gap-3 pt-2">
+              <Link
+                to={`/edit-movie/${movie.id}`}
+                className="inline-flex items-center justify-center rounded-xl border border-lime-500/20 bg-lime-500/10 px-5 py-2.5 text-sm font-semibold text-lime-500 hover:bg-lime-500/15 transition-colors"
+              >
+                ✏️ Editar
+              </Link>
 
-              <div className="mt-6">
-                <Link
-                  to="/movies"
-                  className="inline-flex w-full items-center justify-center rounded-xl border border-amber-200/20 bg-amber-200/10 px-4 py-2.5 text-sm font-semibold text-amber-50 hover:bg-amber-200/15"
-                >
-                  Ir al catálogo
-                </Link>
-              </div>
-            </div>
+              <button
+                onClick={handleDelete}
+                className="inline-flex items-center justify-center rounded-xl border border-pink-500/20 bg-pink-500/10 px-5 py-2.5 text-sm font-semibold text-pink-400 hover:bg-pink-500/15 transition-colors"
+              >
+                🗑️ Eliminar
+              </button>
 
-            <div className="pointer-events-none absolute inset-x-8 -bottom-3 h-px bg-gradient-to-r from-transparent via-amber-200/25 to-transparent" />
-          </div>
-        </div>
-      </div>
+              <Link
+                to="/movies"
+                className="inline-flex items-center justify-center rounded-xl border border-slate-200/10 bg-slate-900/20 px-5 py-2.5 text-sm font-semibold text-slate-100 hover:bg-slate-900/30 transition-colors"
+              >
+                ← Catálogo
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      {}
-      <div className="grid gap-4 md:grid-cols-3">
-        <Feature
-          title="Catálogo de películas"
-          desc="Una selección de títulos para explorar y comparar."
-        />
-        <Feature
-          title="Filtros y búsqueda"
-          desc="Encuentra rápidamente lo que te apetece ver hoy."
-        />
-        <Feature
-          title="Detalle por película"
-          desc="Información clara para decidir en un vistazo."
-        />
-      </div>
-    </section>
-  );
+      <div className="rounded-3xl border border-coral-500/15 bg-gradient-to-br from-coral-500/5 to-slate-800/30 p-8">
+        <h2 className="text-2xl font-bold text-coral-400 mb-4 flex items-center gap-3">
+          <div className="h-1 w-12 bg-gradient-to-r from-coral-500 to-transparent rounded-full" />
+          Sinopsis
+        </h2>
+        <p className="text-slate-200/80 leading-relaxed text-lg">
+          {movie.synopsis || 'No hay sinopsis disponible.'}
+        </p>
+      </div>
+
+      <div className="grid lg:grid-cols-2 gap-6">
+        <div className="rounded-3xl border border-amber-500/15 bg-slate-800/40 p-6">
+          <h3 className="text-xl font-bold text-amber-400 mb-4">Detalles</h3>
+          <div className="grid grid-cols-2 gap-3">
+            <StatCard label="Año" value={movie.year || 'N/A'} />
+            <StatCard label="Duración" value={`${movie.duration || 0} min`} />
+            <StatCard label="Estudio" value={movie.studio || 'N/A'} />
+            <StatCard label="Género" value={movie.genre || 'N/A'} />
+          </div>
+        </div>
+
+        <div className="rounded-3xl border border-lime-500/15 bg-gradient-to-br from-lime-500/10 to-slate-800/40 p-6 flex flex-col items-center justify-center">
+          <p className="text-sm text-slate-300/70 mb-2">RATING</p>
+          <div className="text-7xl font-bold text-lime-400">
+            {movie.rating || '—'}
+          </div>
+          <p className="text-slate-300/60 mt-2">{movie.rating ? '/ 10' : 'Sin calificación'}</p>
+        </div>
+      </div>
+
+      {movie.gallery && movie.gallery.length > 0 && (
+        <div className="space-y-4">
+          <h2 className="text-3xl font-bold text-lime-400">Galería</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {movie.gallery.map((imgUrl, index) => (
+              <div 
+                key={index}
+                className="aspect-video rounded-2xl border border-cyan-200/15 bg-slate-900/20 overflow-hidden"
+              >
+                <img 
+                  src={imgUrl} 
+                  alt={`${movie.title} - Imagen ${index + 1}`}
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                  onError={(e) => {
+                    e.target.src = 'https://via.placeholder.com/400x250/1e293b/94a3b8?text=Imagen';
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {relatedMovies.length > 0 && (
+        <div className="space-y-4">
+          <h2 className="text-3xl font-bold text-amber-400">Películas relacionadas</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {relatedMovies.map((relatedMovie) => (
+              <MovieCard key={relatedMovie.id} movie={relatedMovie} showControls={false} />
+            ))}
+          </div>
+        </div>
+      )}
+    </section>
+  );
 }
 
-function Stat({ label, value }) {
-  return (
-    <div className="rounded-2xl border border-amber-200/10 bg-slate-900/15 p-3">
-      <p className="text-[11px] text-slate-300/70">{label}</p>
-      <p className="mt-1 text-sm font-semibold text-amber-50">{value}</p>
-    </div>
-  );
-}
-
-function Feature({ title, desc }) {
-  return (
-    <div className="rounded-2xl border border-amber-200/10 bg-slate-800/25 p-5">
-      <div className="mb-3 h-px w-10 bg-gradient-to-r from-amber-200/30 to-transparent" />
-      <h3 className="text-base font-semibold text-amber-50">{title}</h3>
-      <p className="mt-1 text-sm text-slate-200/75">{desc}</p>
-    </div>
-  );
-}
-
-function Hint({ text }) {
-  return (
-    <div className="flex items-start gap-2 rounded-xl border border-amber-200/10 bg-slate-800/25 px-3 py-2">
-      <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-amber-300/70" />
-      <p className="text-sm text-slate-200/75">{text}</p>
-    </div>
-  );
+function StatCard({ label, value }) {
+  return (
+    <div className="rounded-xl border border-cyan-200/15 bg-slate-900/40 p-4">
+      <p className="text-xs text-slate-300/70 uppercase tracking-wide mb-1">{label}</p>
+      <p className="text-base font-bold text-cyan-200">{value}</p>
+    </div>
+  );
 }
