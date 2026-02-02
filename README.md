@@ -51,13 +51,14 @@ It implements a **full CRUD workflow** connected to a mock REST API (**JSON Serv
 
 ## 📁 Project Structure (Real)
 
+```
 KAKUREANIME/
 ├── node_modules/
 ├── public/
 ├── src/
 │   ├── assets/
 │   ├── components/
-│   │   ├── Carrousel.jsx
+│   │   ├── Carousel.jsx
 │   │   ├── Layout.jsx
 │   │   ├── MovieCard.jsx
 │   │   └── Navbar.jsx
@@ -80,6 +81,7 @@ KAKUREANIME/
 ├── package-lock.json
 ├── vite.config.js
 └── README.md
+```
 
 ---
 
