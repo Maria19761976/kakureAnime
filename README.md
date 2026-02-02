@@ -3,11 +3,7 @@
 ![KakureAnime Preview](./src/assets/kakureanime-preview.png)
 
 KakureAnime is a modern **Single Page Application (SPA)** built with **React + Vite** that simulates a digital video club focused on anime and movie content.  
-It implements a **full CRUD workflow** connected to a mock REST API (**JSON Server**) and follows a clean, modular, and scalable frontend architecture, suitable for academic evaluation, portfolio presentation, and technical interviews.
-
----
-
-## 🖼️ Image Setup
+It implements a **full CRUD workflow** connected to a mock REST API (**JSON Server**) and follows a clean, modular, and scalable frontend architecture, suitable for academic evaluation, portfolio presentation, and technical interviews
 
 ---
 
