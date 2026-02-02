@@ -17,7 +17,6 @@ export default function MovieDetail() {
         const data = await getMovieById(id);
         setMovie(data);
         
-        // Load all movies for related carousel
         const movies = await getAllMovies();
         setAllMovies(movies);
       } catch (err) {
@@ -84,20 +83,15 @@ export default function MovieDetail() {
     );
   }
 
-  // Get related movies (same genre, excluding current)
   const relatedMovies = allMovies
     .filter(m => m.id !== movie.id && m.genre === movie.genre)
     .slice(0, 6);
 
   return (
     <section className="space-y-6">
-      {/* Hero Section - Poster + Title */}
       <div className="relative overflow-hidden rounded-3xl border border-lime-500/15 bg-gradient-to-br from-slate-800/60 to-slate-900/60 p-8">
-        {/* Background decorations */}
-        <div className="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-lime-500/5 blur-3xl" />
-        
+        <div className="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-lime-500/5 blur-3xl" />        
         <div className="relative grid gap-8 lg:grid-cols-[300px_1fr] items-start">
-          {/* Poster */}
           <div className="rounded-2xl overflow-hidden border border-cyan-200/20 bg-slate-900/40 p-3">
             {movie.poster ? (
               <img 
@@ -115,7 +109,6 @@ export default function MovieDetail() {
             )}
           </div>
 
-          {/* Title & Quote */}
           <div className="space-y-4 flex flex-col justify-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-lime-400">
               {movie.title}
@@ -127,7 +120,6 @@ export default function MovieDetail() {
               </blockquote>
             )}
 
-            {/* Action Buttons */}
             <div className="flex flex-wrap gap-3 pt-2">
               <Link
                 to={`/edit-movie/${movie.id}`}
@@ -154,7 +146,6 @@ export default function MovieDetail() {
         </div>
       </div>
 
-      {/* Synopsis Section */}
       <div className="rounded-3xl border border-coral-500/15 bg-gradient-to-br from-coral-500/5 to-slate-800/30 p-8">
         <h2 className="text-2xl font-bold text-coral-400 mb-4 flex items-center gap-3">
           <div className="h-1 w-12 bg-gradient-to-r from-coral-500 to-transparent rounded-full" />
@@ -165,9 +156,7 @@ export default function MovieDetail() {
         </p>
       </div>
 
-      {/* Stats & Details Grid */}
       <div className="grid lg:grid-cols-2 gap-6">
-        {/* Stats Card */}
         <div className="rounded-3xl border border-amber-500/15 bg-slate-800/40 p-6">
           <h3 className="text-xl font-bold text-amber-400 mb-4">Detalles</h3>
           <div className="grid grid-cols-2 gap-3">
@@ -178,7 +167,6 @@ export default function MovieDetail() {
           </div>
         </div>
 
-        {/* Rating Card */}
         <div className="rounded-3xl border border-lime-500/15 bg-gradient-to-br from-lime-500/10 to-slate-800/40 p-6 flex flex-col items-center justify-center">
           <p className="text-sm text-slate-300/70 mb-2">RATING</p>
           <div className="text-7xl font-bold text-lime-400">
@@ -188,7 +176,6 @@ export default function MovieDetail() {
         </div>
       </div>
 
-      {/* Gallery Section */}
       {movie.gallery && movie.gallery.length > 0 && (
         <div className="space-y-4">
           <h2 className="text-3xl font-bold text-lime-400">Galería</h2>
@@ -212,7 +199,6 @@ export default function MovieDetail() {
         </div>
       )}
 
-      {/* Related Movies Carousel */}
       {relatedMovies.length > 0 && (
         <div className="space-y-4">
           <h2 className="text-3xl font-bold text-amber-400">Películas relacionadas</h2>
@@ -227,7 +213,6 @@ export default function MovieDetail() {
   );
 }
 
-// Component: Stat Card
 function StatCard({ label, value }) {
   return (
     <div className="rounded-xl border border-cyan-200/15 bg-slate-900/40 p-4">
